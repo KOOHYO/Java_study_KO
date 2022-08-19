@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
+		<ul>
+			<li><a href="/bankbook/list.iu">상품리스트</a></li>
+			<li><a href="/board/list.iu">게시판</a></li>
+			<li><a href="/member/login.ko">로그인</a></li>
+			<li><a href="/member/join.ko">회원가입</a></li>
+		</ul>
+	</div>
 	<h1>Login Page</h1>
 	
     

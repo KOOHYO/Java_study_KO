@@ -1,0 +1,33 @@
+.c1{
+    background-color: rgb(80, 78, 209);
+    /* 가로 width */
+    width: 500px;
+
+    /* 세로 height */
+    height: 300px;
+
+    margin-top: 200px;
+    margin-left: 100px;
+
+    /* border 3가지가 필요 */
+    /* 선의 종류 */
+    /* 선의 두께 */
+    /* 선의 색깔 */
+    border-top-style: solid;
+    border-top-width: 10px;
+    border-top-color: aqua;
+
+    /* short hand */
+    border-right: solid black 5px;
+}
+
+.c2{
+    width: 300px;
+    height: 300px;
+
+    border: dashed black 10px;
+
+    margin-right: 100px;
+
+}
+

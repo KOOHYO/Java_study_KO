@@ -1,0 +1,32 @@
+.c1{
+    display: inline;
+}
+
+.c2{
+    display: block;
+    font-size: 32px;
+}
+
+.c3{
+    font-size: 32px;
+}
+
+.c3_1{
+    font-size: 200%;
+}
+
+.c4{
+    font-size: 32px;
+}
+
+.c4_1{
+    font-size: 1.5em;
+}
+
+.c5{
+    font-size: 32px;
+}
+
+.c5_1{
+    font-size: 1.5remk;
+}

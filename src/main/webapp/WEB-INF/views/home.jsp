@@ -4,25 +4,46 @@
 <%-- <%@ page session="false" %> 이거지우기!!!!!!!! --%>
 <html>
 <head>
-	<title>Home</title>
+<meta charset="UTF-8">
+<title>Home</title>
+	<link rel="stylesheet" href="./resources/css/test.css">
+	<style>
+		li{
+			color: blue;
+		}
+	</style>
 </head>
 <body>
-<h1>
-	Main Page  
-</h1>
-<P>  The time on the server is ${serverTime}. </P>
 
-	<c:if test="${empty sessionScope.member}">
-		<h2>어서오세요~</h2>	
-		<button type="button" onclick="location.href='./member/login.ko'">로그인</button>
-		<button type="button" onclick="location.href='./member/join.ko'">회원가입</button>
-	</c:if>
-	
-	<c:if test="${not empty sessionScope.member}">
-		<h2>${sessionScope.member.userName}님 환영합니다!</h2>
-		<button type="button" onclick="location.href='./member/logout.ko'">로그아웃</button>
-	</c:if>
-	
-	<button type="button" onclick="location.href='./bankbook/list.iu'">통장리스트</button>
+	<!--nav-->
+	<!--Group-->
+	<div>
+		<ul>
+			<li><a href="/bankbook/list.iu">상품리스트</a></li>
+			<li><a href="/board/list.iu">게시판</a></li>
+			<li><a href="/member/login.ko">로그인</a></li>
+			<li><a href="/member/join.ko">회원가입</a></li>
+		</ul>
+	</div>
+
+	<img src="./resources/images/cat.jpg" alt="고양이사진">
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/HtwHfeJqlL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+	<h1>Index Page</h1>
+
+	<!-- 순서가 있는 List -->
+	<ol>
+		<li style="color: red;">1</li>
+		<li>2</li>
+		<li>3</li>
+	</ol>
+	<!-- 순서가 없는 List -->
+	<ul>
+		<li>SKT</li>
+		<li>LG</li>
+		<li>KT</li>
+	</ul>
+
 </body>
 </html>

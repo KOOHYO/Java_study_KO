@@ -1,0 +1,16 @@
+@charset "UTF-8";
+h1{
+    color: blueviolet;
+}
+
+/* id 선택자 */
+/* #아이디명*/
+#t1{
+    color: red;
+}
+
+/* class 선택자 */
+/* .클래스명 */
+.c1{
+    color: brown;
+}
