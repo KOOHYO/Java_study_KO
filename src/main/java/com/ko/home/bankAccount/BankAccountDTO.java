@@ -1,12 +1,14 @@
 package com.ko.home.bankAccount;
 
+import java.sql.Date;
+
 import com.ko.home.BankBook.BankBookDTO;
 
 public class BankAccountDTO {
 	private Long accountNum;
 	private String userName;
 	private Long bookNum;
-	private Long accountDate;
+	private Date accountDate;
 	private BankBookDTO bankBookDTO;
 	
 	public BankBookDTO getBankBookDTO() {
@@ -33,10 +35,10 @@ public class BankAccountDTO {
 	public void setBookNum(Long bookNum) {
 		this.bookNum = bookNum;
 	}
-	public Long getAccountDate() {
+	public Date getAccountDate() {
 		return accountDate;
 	}
-	public void setAccountDate(Long accountDate) {
+	public void setAccountDate(Date accountDate) {
 		this.accountDate = accountDate;
 	}
 	

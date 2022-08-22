@@ -17,12 +17,12 @@
 		    <form action="./login.iu" method="post"><!-- /member/login -->
 				  <div class="mb-3">
 				  	<label for="exampleInputEmail1" class="form-label">아이디 입력하세요</label>
-				  	<input type="text" name="userName" value="koo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+				  	<input type="text" name="userName" value="GD" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 				  	<%-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --%>
 				  </div>
 				  <div class="mb-3">
 				    <label for="exampleInputPassword1" class="form-label">비밀번호를 입력하세요</label>
-				    <input type="text" name="passWord" value="4567" class="form-control" id="exampleInputPassword1">
+				    <input type="text" name="passWord" value="123" class="form-control" id="exampleInputPassword1">
 				  </div>
 				  <div class="mb-3 form-check">
 				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
