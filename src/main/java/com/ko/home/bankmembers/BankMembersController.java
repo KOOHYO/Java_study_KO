@@ -80,7 +80,7 @@ public class BankMembersController {
 			System.out.println("회원가입 실패..");
 		}
 		
-		return "redirect:../";
+		return "redirect:./login.iu";
 		
 	}
 	
