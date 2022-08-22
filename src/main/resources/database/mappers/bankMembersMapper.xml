@@ -5,15 +5,20 @@
 		    
 <mapper namespace="com.ko.home.bankmembers.BankMembersDAO">
 
+	<select id="getMyPage" parameterType="BankMembersDTO" resultType="BankMembersDTO">
+		SELECT USERNAME, NAME, EMAIL, PHONE FROM BANKMEMBERS WHERE USERNAME=#{userName}
+	</select>
+
 	<select id="getLogin" parameterType="BankMembersDTO" resultType="BankMembersDTO">
 		SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=#{userName} AND PASSWORD=#{passWord}
 	</select>
 	
 	<insert id="setJoin" parameterType="BankMembersDTO">
-		INSERT INTO BANKMEMBERS VALUES (#{userName}, #{passWord}, #{name}, #{email}, #{phone})
+		INSERT INTO BANKMEMBERS (USERNAME, PASSWORD, NAME, EMAIL, PHONE) VALUES (#{userName}, #{passWord}, #{name}, #{email}, #{phone})
 	</insert>
 	
 	<select id="getSearchByID" parameterType="String" resultType="BankMembersDTO">
 		SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE '%'||#{userName}||'%' ORDER BY USERNAME ASC
 	</select>
+	
 </mapper>

@@ -16,26 +16,37 @@ public class BankMembersDAOTest extends MyAbstractTest{
 	@Autowired
 	private BankMembersDAO bankMembersDAO;
 	
+	@Test
+	public void getMyPage()throws Exception{
+		BankMembersDTO bankMembersDTO = new BankMembersDTO();
+		bankMembersDTO.setUserName("koo");
+		
+		bankMembersDTO = bankMembersDAO.getMyPage(bankMembersDTO);
+		System.out.println(bankMembersDTO.getEmail());
+		
+		assertNotNull(bankMembersDTO);
+	}
+	
+	@Test
+	public void getLoginTest()throws Exception{
+		BankMembersDTO bankMembersDTO = new BankMembersDTO();
+		bankMembersDTO.setUserName("koo");
+		bankMembersDTO.setPassWord("4567");
+		bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
+		assertNotNull(bankMembersDTO);
+	}
+	
 	//@Test 어노테이션 꼭 줘야함!
 	@Test
 	public void setJoinTest()throws Exception{
 		BankMembersDTO bankMembersDTO = new BankMembersDTO();
-		bankMembersDTO.setUserName("GD");
-		bankMembersDTO.setPassWord("123");
-		bankMembersDTO.setName("지용");
-		bankMembersDTO.setEmail("GD@naver.com");
-		bankMembersDTO.setPhone("010-2222-2222");
+		bankMembersDTO.setUserName("koo");
+		bankMembersDTO.setPassWord("4567");
+		bankMembersDTO.setName("효경");
+		bankMembersDTO.setEmail("koo@naver.com");
+		bankMembersDTO.setPhone("010-5555-5255");
 		int result = bankMembersDAO.setJoin(bankMembersDTO);
 		assertEquals(0, result);
-	}
-
-	@Test
-	public void getLoginTest()throws Exception{
-		BankMembersDTO bankMembersDTO = new BankMembersDTO();
-		bankMembersDTO.setUserName("GD");
-		bankMembersDTO.setPassWord("123");
-		bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
-		assertNotNull(bankMembersDTO);
 	}
 	
 	@Test
@@ -58,4 +69,5 @@ public class BankMembersDAOTest extends MyAbstractTest{
 		List<BankMembersDTO> ar = bankMembersDAO.getSearchByID(bankMembersDTOs.toString());
 		assertEquals(bankMembersDTOs, ar);
 	}
+	
 }
