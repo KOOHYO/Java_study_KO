@@ -8,5 +8,11 @@
 </head>
 <body>
 	<h1>MyPage</h1>
+	
+	<p>ID : ${dto.userName}</p>
+	<p>Name : ${dto.name}</p>
+	<p>Email : ${dto.email}</p>
+	<p>Phone : ${dto.phone}</p>
+	
 </body>
 </html>

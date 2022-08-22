@@ -11,6 +11,10 @@ public class BankMembersService {
 	@Autowired
 	private BankMembersDAO bankMembersDAO;
 	
+	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO)throws Exception {
+		return bankMembersDAO.getMyPage(bankMembersDTO);
+	}
+	
 	//로그인
 	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO)throws Exception{
 		return bankMembersDAO.getLogin(bankMembersDTO);

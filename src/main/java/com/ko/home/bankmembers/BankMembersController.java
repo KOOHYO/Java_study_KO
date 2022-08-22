@@ -18,6 +18,19 @@ public class BankMembersController {
 	@Autowired
 	private BankMembersService bankMembersService;
 	
+	@RequestMapping(value = "myPage.iu", method = RequestMethod.GET)
+	public ModelAndView myPage(HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		BankMembersDTO bankMembersDTO = (BankMembersDTO) session.getAttribute("member");
+		
+		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+		
+		mv.setViewName("member/myPage");
+		mv.addObject("dto", bankMembersDTO);
+		
+		return mv;
+	}
+	
 	//로그인
 	@RequestMapping(value = "login.iu", method = RequestMethod.GET)
 	public String login()throws Exception{
@@ -27,15 +40,15 @@ public class BankMembersController {
 	}
 	
 	@RequestMapping(value = "login.iu", method = RequestMethod.POST)
-	public String login(HttpServletRequest request, BankMembersDTO bankMembersDTO)throws Exception{
+	public String login(HttpSession session, BankMembersDTO bankMembersDTO)throws Exception{
 		System.out.println("DB로그인 접속 (POST)");
-		//DB에서 아이디와 패스워드가 일치하는 DTO데이터 가져옴
+		
 		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 		
-		//request에 있는 파라미터를 session에 넣음
-		HttpSession session = request.getSession();
-		//DB에서 가져온 DTO데이터를 JSP로 속성만들어서 보내기
 		session.setAttribute("member", bankMembersDTO);
+		
+		
+		
 		return "redirect:../";
 	}
 	
