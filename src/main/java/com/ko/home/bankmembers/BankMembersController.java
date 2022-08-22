@@ -18,6 +18,19 @@ public class BankMembersController {
 	@Autowired
 	private BankMembersService bankMembersService;
 	
+	@RequestMapping(value = "myPage.iu", method = RequestMethod.GET)
+	public ModelAndView myPage(HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		BankMembersDTO bankMembersDTO = (BankMembersDTO) session.getAttribute("member");
+		
+		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+		
+		mv.setViewName("member/myPage");
+		mv.addObject("dto", bankMembersDTO);
+		
+		return mv;
+	}
+	
 	//로그인
 	@RequestMapping(value = "login.iu", method = RequestMethod.GET)
 	public String login()throws Exception{
