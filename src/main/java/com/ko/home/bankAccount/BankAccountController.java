@@ -11,4 +11,8 @@ public class BankAccountController {
 	@Autowired
 	private BankAccountService bankAccountService;
 	
+	public void setAdd()throws Exception{
+		
+	}
+	
 }

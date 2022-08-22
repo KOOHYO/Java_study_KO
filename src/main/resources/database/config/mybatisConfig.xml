@@ -6,8 +6,10 @@
  <configuration>
 	<typeAliases>
  		<typeAlias type="com.ko.home.bankmembers.BankMembersDTO" alias="BankMembersDTO"/>
- 		<typeAlias type="java.lang.String" alias="String"/>
-		<typeAlias type="java.util.list" alias="List"/>
+	 	<typeAlias type="com.ko.home.bankAccount.BankAccountDTO" alias="BankAccountDTO"/>
 	 	<typeAlias type="com.ko.home.BankBook.BankBookDTO" alias="BankBookDTO"/>
+ 		<typeAlias type="java.lang.String" alias="String"/>
+		<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>
  </configuration>
+S
