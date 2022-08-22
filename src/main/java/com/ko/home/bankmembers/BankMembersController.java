@@ -11,19 +11,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ko.home.bankAccount.BankAccountDTO;
+import com.ko.home.bankAccount.BankAccountService;
+
 @Controller
 @RequestMapping(value = "/member/*")
 public class BankMembersController {
 
 	@Autowired
 	private BankMembersService bankMembersService;
+
 	
 	@RequestMapping(value = "myPage.iu", method = RequestMethod.GET)
-	public ModelAndView myPage(HttpSession session)throws Exception{
+	public ModelAndView getMyPage(HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BankMembersDTO bankMembersDTO = (BankMembersDTO) session.getAttribute("member");
 		
 		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+//		List<BankAccountDTO> ar = bankAccountService.getListByUserName(bankMembersDTO);
 		
 		mv.setViewName("member/myPage");
 		mv.addObject("dto", bankMembersDTO);
