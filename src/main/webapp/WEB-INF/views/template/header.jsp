@@ -37,7 +37,7 @@
 		                    <a class="nav-link" href="/member/logout.iu">로그아웃</a>
 		                </li>
 		                <li class="nav-item">
-		                    <a class="nav-link active" href="/member/mypage.iu">마이페이지</a>
+		                    <a class="nav-link active" href="/member/myPage.iu">마이페이지</a>
 		                </li>
 	                </c:otherwise>
                 </c:choose>
