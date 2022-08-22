@@ -12,4 +12,3 @@
 		<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>
  </configuration>
-S
