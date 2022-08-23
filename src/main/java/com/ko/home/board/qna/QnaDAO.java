@@ -41,7 +41,7 @@ public class QnaDAO implements BoardDAO{
 		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
 	
-	public int setAdd(QnaDTO qnaDTO)throws Exception{
+	public int setReply(QnaDTO qnaDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setAdd", qnaDTO);
 	}
 

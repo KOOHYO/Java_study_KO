@@ -25,7 +25,7 @@
 		DELETE NOTICE WHERE NUM=#{num}
 	</delete>
 	
-	<insert id="setAdd" parameterType="QnaDTO">
+	<insert id="setReply" parameterType="QnaDTO">
 		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH) 
 		VALUES (BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0, 0, 0, 0)
 	</insert>
