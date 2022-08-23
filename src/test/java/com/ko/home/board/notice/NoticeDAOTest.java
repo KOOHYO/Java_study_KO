@@ -40,4 +40,14 @@ public class NoticeDAOTest extends MyAbstractTest {
 		assertEquals(0, result);
 	}
 	
+	@Test
+	public void setUpdate() throws Exception {
+		
+	}
+	
+	@Test
+	public void setDelete() throws Exception {
+		
+	}
+	
 }
