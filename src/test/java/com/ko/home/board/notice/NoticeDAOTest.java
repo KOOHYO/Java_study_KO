@@ -25,8 +25,9 @@ public class NoticeDAOTest extends MyAbstractTest {
 	@Test
 	public void getDetail() throws Exception {
 		BoardDTO boardDTO = new BoardDTO();
-		noticeDAO.getDetail(boardDTO);
-		
+		boardDTO.setNum(2L);
+		boardDTO = noticeDAO.getDetail(boardDTO);
+		assertNotNull(boardDTO);
 	}
 	
 	@Test
@@ -42,12 +43,22 @@ public class NoticeDAOTest extends MyAbstractTest {
 	
 	@Test
 	public void setUpdate() throws Exception {
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setNum(2L);
+		boardDTO.setTitle("Test");
+		boardDTO.setContents("hi");
 		
+		int result = noticeDAO.setUpdate(boardDTO);
+		assertEquals(0, result);
 	}
 	
 	@Test
 	public void setDelete() throws Exception {
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setNum(2L);
 		
+		int result = noticeDAO.setDelete(boardDTO);
+		assertEquals(0, boardDTO);
 	}
 	
 }
