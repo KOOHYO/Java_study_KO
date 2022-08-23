@@ -21,11 +21,23 @@ public class NoticeDAOTest extends MyAbstractTest {
 		List<BoardDTO> ar = noticeDAO.getList();
 		assertNotEquals(0, ar.size());
 	}
-
+	
+	@Test
 	public void getDetail() throws Exception {
 		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setNum(1L);
-		assert
+		noticeDAO.getDetail(boardDTO);
+		
+	}
+	
+	@Test
+	public void setAdd()throws Exception {
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setTitle("Test");
+		boardDTO.setContents("hi");
+		boardDTO.setWriter("GD");
+		
+		int result = noticeDAO.setAdd(boardDTO);
+		assertEquals(0, result);
 	}
 	
 }

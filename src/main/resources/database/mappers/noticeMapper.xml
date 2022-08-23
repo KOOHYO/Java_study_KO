@@ -13,8 +13,8 @@
 		SELECT * FROM NOTICE WHERE NUM=#{num}
 	</select>
 	
-	<insert id="etAdd" parameterType="BoardDTO">
-		INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REGDAYE, HIT) VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE,0)
+	<insert id="setAdd" parameterType="BoardDTO">
+		INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT) VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE,0)
 	</insert>
 	
 	<update id="setUpdate" parameterType="BoardDTO">
