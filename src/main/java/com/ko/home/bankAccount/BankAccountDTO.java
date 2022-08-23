@@ -1,4 +1,4 @@
-package com.ko.home.bankaccount;
+package com.ko.home.bankAccount;
 
 import java.sql.Date;
 

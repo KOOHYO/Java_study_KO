@@ -1,14 +1,25 @@
 package com.ko.home.BankBook;
 
+import java.util.List;
+
+import com.ko.home.bankaccount.BankAccountDTO;
+
 public class BankBookDTO {
 	//변수선언
 	private Long bookNum;
 	private String bookName;
 	private Double bookRate;
 	private Integer bookSale;
+	private List<BankAccountDTO> bankAccountDTOs;
 	
 	//개터 세터
 	
+	public List<BankAccountDTO> getBankAccountDTOs() {
+		return bankAccountDTOs;
+	}
+	public void setBankAccountDTOs(List<BankAccountDTO> bankAccountDTOs) {
+		this.bankAccountDTOs = bankAccountDTOs;
+	}
 	public Long getBookNum() {
 		return bookNum;
 	}

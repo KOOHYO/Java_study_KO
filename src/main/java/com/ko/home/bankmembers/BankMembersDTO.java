@@ -1,5 +1,9 @@
 package com.ko.home.bankmembers;
 
+import java.util.List;
+
+import com.ko.home.bankaccount.BankAccountDTO;
+
 public class BankMembersDTO {
 
 	private String userName;
@@ -7,8 +11,15 @@ public class BankMembersDTO {
 	private String name;
 	private String email;
 	private String phone;
+	private List<BankAccountDTO> bankAccountDTOs;
 	
 	//Getter & Setter
+	public List<BankAccountDTO> getBankAccountDTOs() {
+		return bankAccountDTOs;
+	}
+	public void setBankAccountDTOs(List<BankAccountDTO> bankAccountDTOs) {
+		this.bankAccountDTOs = bankAccountDTOs;
+	}
 	public String getUserName() {
 		return userName;
 	}
