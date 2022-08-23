@@ -13,7 +13,7 @@ public class BankAccountDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.ko.home.bankmembers.BankMembersDAO.";
+	private final String NAMESPACE="com.ko.home.bankaccount.BankAccountDAO.";
 	
 	public int setAdd(BankAccountDTO bankAccountDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setAdd", bankAccountDTO);
