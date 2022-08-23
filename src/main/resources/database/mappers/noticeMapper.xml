@@ -4,5 +4,25 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
 <mapper namespace="com.ko.home.board.notice.NoticeDAO">
+
+	<select id="getList" resultType="NoticeDTO">
+		SELECT NUM, TITLE, WRITER, REGDATE, HIT FROM NOTICE ORDER BY NUM DESC
+	</select>
+	
+	<select id="getDetail" parameterType="BoardDTO" resultSets="NoticeDTO">
+		SELECT * FROM NOTICE WHERE NUM=#{num}
+	</select>
+	
+	<insert id="etAdd" parameterType="BoardDTO">
+		INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REGDAYE, HIT) VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE,0)
+	</insert>
+	
+	<update id="setUpdate" parameterType="BoardDTO">
+		UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+	</update>
+	
+	<delete id="setDelete" parameterType="BoardDTO">
+		DELETE NOTICE WHERE NUM=#{num}
+	</delete>
 	
 </mapper>
