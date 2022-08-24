@@ -31,14 +31,15 @@ public class NoticeController {
 	public ModelAndView getList(Pager pager)throws Exception{
 		System.out.println("Notice 리스트 접속");
 		ModelAndView mv = new ModelAndView();
-		System.out.println(pager.getPage());
+		System.out.println(pager);
 		
 //		System.out.println("Page : "+page);
-//		
-//		List<BoardDTO> ar = noticeService.getList(page);
-//		
-//		mv.addObject("list", ar);
-//		mv.setViewName("board/list");
+		
+		List<BoardDTO> ar = noticeService.getList(pager);
+		
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
+		mv.setViewName("board/list");
 		
 		return mv;
 	}

@@ -12,12 +12,12 @@ public class Pager {
 	 * */
 	
 	private Long page;
-	private Long perPage;
 	private Long startRow;
 	private Long lastRow;
-	private Long perBlock;
 	private Long startNum;
 	private Long lastNum;
+	private Long perPage;
+	private Long perBlock;
 	
 	public Pager() {
 		this.perPage=10L;
@@ -27,10 +27,32 @@ public class Pager {
 	//1. Mapper에서 사용할 값 계산
 	public void getRowNum()throws Exception{
 		this.startRow = (this.getPage()-1)*perPage+1;
+		this.lastRow = this.getPage() * this.getPerPage();
 	}
 	
 	//2. JSP에서 사용할 값 계산
-	public void getNum()throws Exception{
+	public void getNum(Long totalCount)throws Exception{
+		//2. totalCount로 totalPage 구하기
+		Long totalPage = totalCount/this.getPerPage();
+		if(totalCount%this.getPerPage() != 0) {
+			totalPage++;
+		}
+		
+		//3. totalPage로 totalBlock 구하기
+		Long totalBlock = totalPage/this.getPerBlock();
+		if(totalPage%this.getPerBlock() != 0) {
+			totalBlock++;
+		}
+		
+		//4. page로 curBlock 찾기
+		Long curBlock = this.getPage()/this.getPerBlock();
+		if(this.getPage()%this.getPerBlock() != 0) {
+			curBlock++;
+		}
+		
+		//5. curBlock으로 startNum, lastNum 구하기
+		this.startNum = (curBlock-1)*this.getPerBlock()+1;
+		this.lastNum = curBlock*this.getPerBlock();
 		
 	}
 	

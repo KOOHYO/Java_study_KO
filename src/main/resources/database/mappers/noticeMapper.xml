@@ -5,7 +5,7 @@
 		    
 <mapper namespace="com.ko.home.board.notice.NoticeDAO">
 
-	<select id="getList" parameterType="java.util.Map" resultType="NoticeDTO">
+	<select id="getList" parameterType="Pager" resultType="NoticeDTO">
 		SELECT * FROM
 		(SELECT ROWNUM R, N.* FROM NOTICE N ORDER BY NUM DESC)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
