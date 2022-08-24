@@ -50,7 +50,6 @@ public class NoticeController {
 	public String getDetail(BoardDTO boardDTO, Model model)throws Exception{
 		System.out.println("Notice 디테일 접속");
 		boardDTO = noticeService.getDetail(boardDTO);
-		System.out.println("boardDTO : "+boardDTO);
 		
 		model.addAttribute("boardDTO", boardDTO);
 		
@@ -93,7 +92,7 @@ public class NoticeController {
 	public String setUpdate(BoardDTO boardDTO)throws Exception{
 		int result = noticeService.setUpdate(boardDTO);
 		
-		return "redirect:./detail.ko?num="+boardDTO.getNum();
+		return "redirect:../board/detail.ko?num="+boardDTO.getNum();
 	}
 	
 	//글삭제
@@ -101,7 +100,7 @@ public class NoticeController {
 	@RequestMapping(value = "delet.ko")
 	public String setDelete(BoardDTO boardDTO)throws Exception{
 		int result = noticeService.setDelete(boardDTO);
-		return "redirect:./list.ko";
+		return "redirect:../board/list.ko";
 	}
 	
 }

@@ -16,7 +16,9 @@
 <%-- con-lg-7은 사이즈 조절하는것 --%>
 	<section class="container-fluid con-lg-7">
 		<div class="row">
-			
+				<h1>Update Page</h1>
+			<form action="./detail.ko" method="post">
+			</form>
 		</div>
 	</section>
 

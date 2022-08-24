@@ -40,7 +40,8 @@
 		</div>
 	</section>
 	<br>
-		<a href="./update.ko?writer=${boardDTO.writer}">글 수정하기</a>
+		<a href="./update.ko?writer=${boardDTO.num}">글 수정하기</a>
+		<a href="./delete.ko?num=${boardDTO.num}">글 삭제하기</a>
 		<%-- <a class="btn btn-secondary disabled" role="button" aria-disabled="true">글상세보기</a> --%>
 	<br>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
