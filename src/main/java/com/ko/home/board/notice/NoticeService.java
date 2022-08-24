@@ -36,12 +36,24 @@ public class NoticeService implements BoardService{
 		Long startRow=(page-1)*perPage+1;
 		Long lastRow=page*perPage;
 		
-		System.out.println("StartRow : "+startRow);
-		System.out.println("LastRow : "+lastRow);
+//		System.out.println("StartRow : "+startRow);
+//		System.out.println("LastRow : "+lastRow);
 		//Map은
 		Map<String, Long> map = new HashMap<String, Long>();
 		map.put("startRow", startRow);
 		map.put("lastRow", lastRow);
+		
+		//JSP에 페이지 번호를 출력 1 - ?
+		//1. 글의 총 갯수
+		//2. 글의 총 갯수를 이용해서 총 페이지수 구하기
+		Long totalCount = noticeDAO.getCount();
+		Long totalPage = totalCount%perPage;
+		
+		if(totalPage!=0) {
+			totalPage = totalPage+1;
+		}
+		
+		System.out.println("totalPage : "+totalPage);
 		
 		return noticeDAO.getList(map);
 	}
