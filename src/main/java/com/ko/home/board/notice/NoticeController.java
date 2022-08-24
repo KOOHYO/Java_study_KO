@@ -25,6 +25,7 @@ public class NoticeController {
 		List<BoardDTO> ar = noticeService.getList();
 		
 		mv.addObject("list", ar);
+		mv.addObject("board", "Notice");
 		mv.setViewName("notice/list");
 		
 		return mv;
