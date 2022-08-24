@@ -39,6 +39,9 @@
 		                <li class="nav-item">
 		                    <a class="nav-link active" href="/member/myPage.iu">마이페이지</a>
 		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link active" href="/notice/list.ko">게시판</a>
+		                </li>
 	                </c:otherwise>
                 </c:choose>
                 

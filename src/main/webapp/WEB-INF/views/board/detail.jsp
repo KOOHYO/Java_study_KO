@@ -16,10 +16,32 @@
 <%-- con-lg-7은 사이즈 조절하는것 --%>
 	<section class="container-fluid con-lg-7">
 		<div class="row">
-			
+				<table class="table">
+  				<thead class="table-dark">
+					<tr>
+						<th>글번호</th>
+						<th>글제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+  				</thead>
+  				<tbody>
+						<tr>
+							<td>${boardDTO.num}</td>
+							<td>${boardDTO.title}</td>
+							<td>${boardDTO.writer}</td>
+							<td>${boardDTO.regDate}</td>
+							<td>${boardDTO.hit}</td>
+						</tr>
+  				</tbody>
+			</table>
 		</div>
 	</section>
-
+	<br>
+		<a href="update.ko">글 수정하기</a>
+		<%-- <a class="btn btn-secondary disabled" role="button" aria-disabled="true">글상세보기</a> --%>
+	<br>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
