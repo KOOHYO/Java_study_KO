@@ -9,11 +9,11 @@
 
 	<c:import url="../template/header.jsp"></c:import>
 	
-	<section class="container-fluid col-lg-5">
+	<section class="container-fluid col-lg-4">
 		<div class="row">
 			<form action="./search.iu" method="post">
 			
-				<h1>아이디 검색</h1>
+				<h1>회원정보 검색</h1>
 			
 				<div class="mb-3">
 					<label for="exampleInputEmail1" class="form-label">아이디 입력하세요</label>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ko.home.board.impl.BoardDAO;
 import com.ko.home.board.impl.BoardDTO;
+import com.ko.home.util.Pager;
 
 @Repository
 public class QnaDAO implements BoardDAO{
@@ -17,13 +18,18 @@ public class QnaDAO implements BoardDAO{
 	private final String NAMESPACE="com.ko.home.board.qna.QnaDAO.";
 	
 	@Override
-	public List<BoardDTO> getList() throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<BoardDTO> getList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList"+pager);
 	}
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO);
+	}
+	
+	@Override
+	public Long getCount() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getCount");
 	}
 
 	@Override

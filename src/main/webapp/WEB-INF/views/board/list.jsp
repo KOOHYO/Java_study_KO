@@ -19,6 +19,7 @@
 <%-- con-lg-7은 사이즈 조절하는것 --%>
 	<section class="container-fluid con-lg-7">
 		<div class="row">
+			<h1>${board} List Page</h1>
 			<table class="table">
   				<thead class="table-dark">
 					<tr>
