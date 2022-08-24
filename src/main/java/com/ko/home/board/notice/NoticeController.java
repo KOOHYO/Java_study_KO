@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ko.home.board.impl.BoardDTO;
+import com.ko.home.util.Pager;
 
 @Controller
 @RequestMapping(value = "/notice/*")
@@ -27,16 +28,17 @@ public class NoticeController {
 	
 	//글목록
 	@RequestMapping(value = "list.ko", method = RequestMethod.GET)
-	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page)throws Exception{
-		System.out.println("노티스 리스트 접속");
+	public ModelAndView getList(Pager pager)throws Exception{
+		System.out.println("Notice 리스트 접속");
 		ModelAndView mv = new ModelAndView();
+		System.out.println(pager.getPage());
 		
-		System.out.println("Page : "+page);
-		
-		List<BoardDTO> ar = noticeService.getList(page);
-		
-		mv.addObject("list", ar);
-		mv.setViewName("board/list");
+//		System.out.println("Page : "+page);
+//		
+//		List<BoardDTO> ar = noticeService.getList(page);
+//		
+//		mv.addObject("list", ar);
+//		mv.setViewName("board/list");
 		
 		return mv;
 	}
@@ -45,7 +47,7 @@ public class NoticeController {
 	//여기서 String 말고 void로 해도 가능!
 	@RequestMapping(value = "detail.ko", method = RequestMethod.GET)
 	public String getDetail(BoardDTO boardDTO, Model model)throws Exception{
-		System.out.println("노티스 디테일 접속");
+		System.out.println("Notice 디테일 접속");
 		boardDTO = noticeService.getDetail(boardDTO);
 		System.out.println("boardDTO : "+boardDTO);
 		
@@ -77,6 +79,7 @@ public class NoticeController {
 	//글수정 여기서 메서드 안쓰면 GET이다!!
 	@RequestMapping(value = "update.ko", method = RequestMethod.GET)
 	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
+		System.out.println("Notice 업데이트 접속");
 		boardDTO = noticeService.getDetail(boardDTO);
 		
 		mv.addObject("boardDTO", mv);
