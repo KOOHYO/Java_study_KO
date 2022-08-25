@@ -4,7 +4,7 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
 <mapper namespace="com.ko.home.board.qna.QnaDAO">
-	<select id="getList" resultType="BoardDTO">
+	<select id="getList" parameterType="Pager" resultType="BoardDTO">
 		SELECT NUM, TITLE, WRITER, REGDATE, HIT FROM NOTICE ORDER BY NUM DESC
 	</select>
 	
@@ -12,7 +12,7 @@
 		SELECT * FROM NOTICE WHERE NUM=#{num}
 	</select>
 	
-	<select id="getCount" resultType="Long">
+	<select id="getCount" parameterType="Pager" resultType="Long">
 		SELECT COUNT(NUM) FROM NOTICE
 	</select>
 	

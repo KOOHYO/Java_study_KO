@@ -16,7 +16,7 @@ public interface BoardDAO {
 	public BoardDTO getDetail(BoardDTO boardDTO)throws Exception;
 	
 	//글 갯수
-	public Long getCount()throws Exception;
+	public Long getCount(Pager pager)throws Exception;
 	
 	//글쓰기 글제목, 글작성자, 글내용
 	public int setAdd(BoardDTO boardDTO)throws Exception;

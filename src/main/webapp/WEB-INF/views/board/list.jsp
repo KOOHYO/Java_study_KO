@@ -74,11 +74,12 @@
 	  <ul class="pagination">
 	  
 	  <c:if test="${pager.pre}">
-	    <li class="page-item"><a class="page-link" href="./list.ko?page=${pager.startNum-1}">Previous</a></li>
+	    <li class="page-item">
+	    <a class="page-link" href="./list.ko?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a></li>
 	  </c:if>
 	  
 	  <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-		<li class="page-item"><a class="page-link" href="./list.ko?page=${i}">${i}</a></li>
+		<li class="page-item"><a class="page-link" href="./list.ko?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 	  </c:forEach>
 	    
 <%-- 	    <c:choose>
@@ -93,7 +94,7 @@
 	    
 	    <%-- 삼항연산자를 사용해서 하는 표현식 --%>
 	    <li class="page-item ${pager.next?'':'disabled'}">
-	    <a class="page-link" href="./list.ko?page=${pager.lastNum+1}">Next</a></li>
+	    <a class="page-link" href="./list.ko?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a></li>
 	  </ul>
 	</nav>
 	
