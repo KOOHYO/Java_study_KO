@@ -6,6 +6,8 @@ import com.ko.home.util.Pager;
 
 public interface BoardService {
 
+	
+	
 	//글목록
 	public List<BoardDTO> getList(Pager pager)throws Exception;
 	

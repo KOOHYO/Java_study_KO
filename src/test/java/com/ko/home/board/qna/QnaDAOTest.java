@@ -12,14 +12,21 @@ public class QnaDAOTest extends MyAbstractTest {
 	@Autowired
 	private QnaDAO qnaDAO;
 	
-	@Test
-	public void setReply()throws Exception{
-		QnaDTO qnaDTO = new QnaDTO();
-		qnaDTO.setTitle("Test");
-		qnaDTO.setContents("안녕");
-		qnaDTO.setWriter("GD");
-		int reselt = qnaDAO.setReply(qnaDTO);
-		assertEquals(0, qnaDTO);
+	//@Test
+	public void setAdd()throws Exception{
+		for(int i=0; i<100; i++) {
+			QnaDTO qnaDTO = new QnaDTO();
+			qnaDTO.setTitle("Test"+i);
+			qnaDTO.setContents("hi"+i);
+			qnaDTO.setWriter("Koo"+i);
+			
+			int result = qnaDAO.setAdd(qnaDTO);
+			
+			if(i%10==0) {
+				Thread.sleep(500);	
+			}
+		}
+		System.out.println("포문 끝!");
 	}
 
 }

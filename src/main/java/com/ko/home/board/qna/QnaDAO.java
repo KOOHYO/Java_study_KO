@@ -17,9 +17,17 @@ public class QnaDAO implements BoardDAO{
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.ko.home.board.qna.QnaDAO.";
 	
+	public int setReplyAdd(QnaDTO qnaDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
+	}
+	
+	public int setStepUpdate(QnaDTO qnaDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
+	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getList"+pager);
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 
 	@Override
@@ -45,10 +53,6 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
-	}
-	
-	public int setReply(QnaDTO qnaDTO)throws Exception{
-		return sqlSession.insert(NAMESPACE+"setAdd", qnaDTO);
 	}
 
 }
