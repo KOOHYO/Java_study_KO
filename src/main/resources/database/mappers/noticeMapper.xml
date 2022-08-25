@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="getCount" parameterType="Pager" resultType="Long">
-		SELECT COUNT(NUM) FROM NOTICE
+		SELECT COUNT(num) FROM NOTICE
 		<include refid="search"></include>
 	</select>
 	
@@ -38,7 +38,7 @@
 			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT)
-		VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE,0)
+		VALUES(#{num}, #{title}, #{contents}, #{writer}, sysdate,0)
 	</insert>
 	
 	<update id="setUpdate" parameterType="BoardDTO">

@@ -26,9 +26,9 @@
 				  <div class="col-12">
 				    <label class="visually-hidden" for="kind">kind</label>
 				    <select name="kind" class="form-select" id="kind">
-				      <option value="Contents">Contents</option>
-				      <option value="Title">Title</option>
-				      <option value="Writer">Writer</option>
+				      <option value="contents">Contents</option>
+				      <option value="title">Title</option>
+				      <option value="writer">Writer</option>
 				    </select>
 				  </div>
 				
