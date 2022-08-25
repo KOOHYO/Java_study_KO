@@ -39,6 +39,9 @@
 		                <li class="nav-item">
 		                    <a class="nav-link active" href="/member/myPage.iu">마이페이지</a>
 		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link active" href="/notice/list.ko">게시판</a>
+		                </li>
 	                </c:otherwise>
                 </c:choose>
                 
@@ -49,7 +52,7 @@
                     <a class="nav-link" href="/bankbook/list.iu">상품리스트</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/board/list.iu">공지사항</a>
+                    <a class="nav-link" href="/qna/list.ko">QNA</a>
                 </li>
 
                 </ul>

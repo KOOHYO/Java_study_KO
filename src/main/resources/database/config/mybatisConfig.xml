@@ -8,6 +8,11 @@
  		<typeAlias type="com.ko.home.bankmembers.BankMembersDTO" alias="BankMembersDTO"/>
 	 	<typeAlias type="com.ko.home.bankaccount.BankAccountDTO" alias="BankAccountDTO"/>
 	 	<typeAlias type="com.ko.home.BankBook.BankBookDTO" alias="BankBookDTO"/>
+	 	<typeAlias type="com.ko.home.board.impl.BoardDTO" alias="BoardDTO"/>
+	 	<typeAlias type="com.ko.home.board.notice.NoticeDTO" alias="NoticeDTO"/>
+	 	<typeAlias type="com.ko.home.board.qna.QnaDTO" alias="QnaDTO"/>
+	 	<typeAlias type="com.ko.home.util.Pager" alias="Pager"/>
+	 	<typeAlias type="java.lang.Long" alias="Long"/>
  		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>

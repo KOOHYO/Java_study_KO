@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE mapper
+		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		    
+<mapper namespace="com.ko.home.board.qna.QnaDAO">
+
+	<sql id="search">
+		WHERE
+			<choose>
+				<when test="kind=='title'">TITLE</when>
+				<when test="kind=='writer'">WRITER</when>
+				<otherwise>contents</otherwise>
+			</choose>
+		LIKE '%'||#{search}||'%'
+	</sql>
+
+	<insert id="setReplyAdd" parameterType="QnaDTO">
+		<selectKey keyProperty="num" order="BEFORE" resultType="Long">
+			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH) 
+		VALUES (#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{ref}, #{step}, #{depth})
+	</insert>
+
+	<update id="setStepUpdate" parameterType="QnaDTO">
+		UPDATE QNA STEP=SETP+1 WHERE REF= #{ref} AND STEP > #{step}
+	</update>
+
+	<select id="getList" parameterType="Pager" resultType="QnaDTO">
+		SELECT * FROM
+		(SELECT ROWNUM R, N.* FROM
+		(SELECT * FROM QNA 
+			<include refid="search"></include>
+		 ORDER BY REF DESC, STEP ASC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<select id="getDetail" parameterType="BoardDTO" resultType="QnaDTO">
+		SELECT * FROM QNA WHERE NUM=#{num}
+	</select>
+	
+	<select id="getCount" parameterType="Pager" resultType="Long">
+		SELECT COUNT(NUM) FROM QNA
+	</select>
+	
+	<insert id="setAdd" parameterType="BoardDTO">
+		<selectKey keyProperty="num" order="BEFORE" resultType="Long">
+			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH) 
+		VALUES (#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{num}, 0, 0)
+	</insert>
+	
+	<update id="setUpdate" parameterType="BoardDTO">
+		UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+	</update>
+	
+	<delete id="setDelete" parameterType="BoardDTO">
+		DELETE QNA WHERE NUM=#{num}
+	</delete>
+	
+</mapper>
