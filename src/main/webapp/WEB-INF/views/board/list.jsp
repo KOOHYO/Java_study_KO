@@ -47,11 +47,28 @@
 	
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination">
-	    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-	    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-		    <li class="page-item"><a class="page-link" href="./list.ko?page=${i}">${i}</a></li>
-	    </c:forEach>
-	    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+	  
+	  <c:if test="${pager.pre}">
+	    <li class="page-item"><a class="page-link" href="./list.ko?page=${pager.startNum-1}">Previous</a></li>
+	  </c:if>
+	  
+	  <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+		<li class="page-item"><a class="page-link" href="./list.ko?page=${i}">${i}</a></li>
+	  </c:forEach>
+	    
+<%-- 	    <c:choose>
+	    	<c:when test="${pager.next}">
+	    		<li class="page-item">
+	    	</c:when>
+	    	<c:otherwise>
+	    		여기는 부트스트랩 class 속성 disabled를 이용해서 누르지못하게 막아줌
+	    		<li class="page-item disabled">
+	    	</c:otherwise>
+	    </c:choose> --%>
+	    
+	    <%-- 삼항연산자를 사용해서 하는 표현식 --%>
+	    <li class="page-item ${pager.next?'':'disabled'}">
+	    <a class="page-link" href="./list.ko?page=${pager.lastNum+1}">Next</a></li>
 	  </ul>
 	</nav>
 	
