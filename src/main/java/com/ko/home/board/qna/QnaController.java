@@ -121,7 +121,7 @@ public class QnaController {
 	@PostMapping("reply.ko")
 	public String setReply(QnaDTO qnaDTO)throws Exception {
 		int result = qnaService.setReply(qnaDTO);
-		return "redirect:./list.iu";
+		return "redirect:./list.ko";
 	}
 	
 }

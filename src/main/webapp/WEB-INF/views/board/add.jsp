@@ -19,7 +19,7 @@
 		<h1 class="align-center">${board} Add Page</h1>
 		<div class="row">
 		
-			<form action="./add.iu" method="post">
+			<form action="./add.ko" method="post">
 			
 				<div class="mb-3">
 				  <label for="title" class="form-label">Title</label>
