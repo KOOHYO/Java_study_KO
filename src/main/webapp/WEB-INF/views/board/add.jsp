@@ -15,7 +15,29 @@
 <%-- 입력창 만들기 전 부트스트랩 쓸때 이걸 써야한다 --%>
 <%-- con-lg-7은 사이즈 조절하는것 --%>
 	<section class="container-fluid con-lg-7">
+		<h1 class="align-center">${board} Add Page</h1>
 		<div class="row">
+		
+			<form action="./add.iu" method="post">
+			
+				<div class="mb-3">
+				  <label for="title" class="form-label">Title</label>
+				  <input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
+				</div>
+				<div class="mb-3">
+				  <label for="writer" class="form-label">Writer</label>
+				  <input type="text" name="writer" class="form-control" id="Writer" placeholder="작성자 입력">
+				</div>
+				<div class="mb-3">
+				  <label for="contents" class="form-label">Contents</label>
+				  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
+				</div>
+				
+				<div class="mb-3">
+					<button class="btn btn-success">글 추가</button>
+				</div>
+				
+			</form>
 			
 		</div>
 	</section>
