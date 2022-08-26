@@ -22,6 +22,7 @@
 					<tr>
 						<th>글번호</th>
 						<th>글제목</th>
+						<th>글내용</th>
 						<th>작성자</th>
 						<th>작성일</th>
 						<th>조회수</th>
@@ -31,6 +32,7 @@
 						<tr>
 							<td>${boardDTO.num}</td>
 							<td>${boardDTO.title}</td>
+							<td>${boardDTO.contents}</td>
 							<td>${boardDTO.writer}</td>
 							<td>${boardDTO.regDate}</td>
 							<td>${boardDTO.hit}</td>
