@@ -27,11 +27,11 @@
 				</div>
 				<div class="mb-3">
 				  <label for="writer" class="form-label">Writer</label>
-				  <input type="text" name="writer" class="form-control" id="Writer" placeholder="작성자 입력">
+				  <input type="text" name="writer" class="form-control" id="writer" placeholder="작성자 입력">
 				</div>
 				<div class="mb-3">
 				  <label for="contents" class="form-label">Contents</label>
-				  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
+				  <textarea class="form-control" name="contents" id="contents" rows="3">${boardDTO.contents}</textarea>
 				</div>
 				
 				<div class="mb-3">
