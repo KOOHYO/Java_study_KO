@@ -100,8 +100,9 @@ public class NoticeController {
 	
 	//글삭제
 	//글수정 여기서 메서드 안쓰면 GET이다!!
-	@RequestMapping(value = "delet.ko")
+	@RequestMapping(value = "delete.ko")
 	public String setDelete(BoardDTO boardDTO)throws Exception{
+		System.out.println("Delete 접속");
 		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list.ko";
 	}
