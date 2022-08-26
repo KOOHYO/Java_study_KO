@@ -5,17 +5,26 @@
 		    
 <mapper namespace="com.ko.home.bankmembers.BankMembersDAO">
 
+	<insert id="setAddFile" parameterType="BankMembersFileDTO">
+		INSERT INTO MEMBERFILE (FILENUM, FILENAME, ORINAME, USERNAME)
+		VALUES(FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{userName})
+	</insert>
 	
 	<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult">
-		SELECT USERNAME, NAME, EMAIL, PHONE, ACCOUNTNUM, ACCOUNTDATE, BOOKNAME
+		SELECT BM.USERNAME, NAME, EMAIL, PHONE, FILENUM, FILENAME, ACCOUNTNUM, ACCOUNTDATE, BOOKNAME
 		FROM BANKMEMBERS BM
-			 INNER JOIN
-			 BANKACCOUNT BA
-			 USING (USERNAME)
-			 INNER JOIN
-			 BANKBOOK BB
-			 USING (BOOKNUM)
-		WHERE USERNAME=#{userName}
+		    LEFT JOIN
+		    MEMBERFILE MF
+		    ON BM.USERNAME=MF.USERNAME
+					 
+		    LEFT JOIN
+		    BANKACCOUNT BA
+		    ON BM.USERNAME=BA.USERNAME
+					 
+		    LEFT JOIN
+		    BANKBOOK BB
+		    ON BA.BOOKNUM=BB.BOOKNUM
+		WHERE BM.USERNAME=#{userName}
 	</select>
 	
 	<resultMap type="BankMembersDTO" id="getMyPageResult">
@@ -23,6 +32,10 @@
 		<result column="NAME" property="name"/>
 		<result column="EMAIL" property="email"/>
 		<result column="PHONE" property="phone"/>
+		<association property="bankMembersFileDTO" javaType="BankMembersFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+		</association>
 		<collection property="bankAccountDTOs" javaType="List" ofType="BankAccountDTO">
 			<id column="ACCOUNTNUM" property="accountNum"/>
 			<result column="ACCOUNTDATE" property="accountDate"/>
@@ -30,7 +43,6 @@
 			<result column="BOOKNAME" property="bookName"/>
 		</association>
 		</collection>
-		
 	</resultMap>
 
 	<select id="getLogin" parameterType="BankMembersDTO" resultType="BankMembersDTO">

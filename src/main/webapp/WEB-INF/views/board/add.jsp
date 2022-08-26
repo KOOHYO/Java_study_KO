@@ -26,7 +26,7 @@
 		<h1 class="align-center">${board} Add Page</h1>
 		<div class="row">
 		
-			<form action="./add.ko" method="post">
+			<form action="./add.ko" method="post" enctype="multipart/form-data">
 			
 				<div class="mb-3">
 				  <label for="title" class="form-label">Title</label>
@@ -39,6 +39,21 @@
 				<div class="mb-3">
 				  <label for="contents" class="form-label">Contents</label>
 				  <textarea class="form-control" name="contents" id="contents" rows="3">${boardDTO.contents}</textarea>
+				</div>
+				
+				<div class="mb-3">
+				  <label for="contents" class="form-label">File</label>
+				  <input type="file" name="files" class="form-control" id="file">
+				</div>
+				
+				<div class="mb-3">
+				  <label for="contents" class="form-label">File</label>
+				  <input type="file" name="files" class="form-control" id="file">
+				</div>
+				
+				<div class="mb-3">
+				  <label for="contents" class="form-label">File</label>
+				  <input type="file" name="files" class="form-control" id="file">
 				</div>
 				
 				<div class="mb-3">

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ko.home.board.impl.BoardDTO;
@@ -70,9 +72,9 @@ public class NoticeController {
 	
 	//글작성 글제목, 글작성자, 글내용 파라미터로 넘어옴
 	@RequestMapping(value = "add.ko", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO)throws Exception{
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setAdd(boardDTO);
+		int result = noticeService.setAdd(boardDTO, files);
 		
 		mv.setViewName("redirect:./list.ko");
 		

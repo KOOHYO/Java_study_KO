@@ -12,7 +12,7 @@
 	<section class="container-fluid con-lg-7">
 		<div class="row">
 			
-			<form action="./join.iu" method="POST">
+			<form action="./join.iu" method="POST" enctype="multipart/form-data">
 				<h1>Join Page</h1>
 				<h2>회원가입</h2>
 		   		<div>
@@ -36,6 +36,11 @@
 			       <br>
 			       <input type="submit" value="회원가입완료"><input type="button" value="회원가입취소">
 			   </div>
+			   <div>
+			   		Photo<br>
+		        	<input type="file" name="photo" id="files">
+			   </div>
+			   
 			</form>
 			
 		</div>

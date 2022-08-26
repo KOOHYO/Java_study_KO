@@ -3,6 +3,7 @@ package com.ko.home.bankmembers;
 import java.util.List;
 
 import com.ko.home.bankaccount.BankAccountDTO;
+import com.ko.home.file.FileDTO;
 
 public class BankMembersDTO {
 
@@ -12,7 +13,14 @@ public class BankMembersDTO {
 	private String email;
 	private String phone;
 	private List<BankAccountDTO> bankAccountDTOs;
+	private BankMembersFileDTO bankMembersFileDTO;
 	
+	public BankMembersFileDTO getBankMembersFileDTO() {
+		return bankMembersFileDTO;
+	}
+	public void setBankMembersFileDTO(BankMembersFileDTO bankMembersFileDTO) {
+		this.bankMembersFileDTO = bankMembersFileDTO;
+	}
 	//Getter & Setter
 	public List<BankAccountDTO> getBankAccountDTOs() {
 		return bankAccountDTOs;

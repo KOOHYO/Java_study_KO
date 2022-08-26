@@ -39,7 +39,11 @@
    <br>   
    <br>
    <br>
-   <img src="../resources/images/page.gif">
+	
+	<div class="row">
+		<img alt="" src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
+	</div>
+   
    </section>
    
    <c:import url="../template/footer.jsp"></c:import>
