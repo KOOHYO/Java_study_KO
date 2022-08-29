@@ -2,6 +2,8 @@ package com.ko.home.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ko.home.board.impl.BoardDTO;
@@ -23,7 +26,7 @@ public class QnaController {
 	
 	@ModelAttribute("board")
 	public String getBoard() {
-		return"Qna";
+		return"qna";
 	}
 	
 	
@@ -71,9 +74,9 @@ public class QnaController {
 	
 	//글작성 글제목, 글작성자, 글내용 파라미터로 넘어옴
 	@RequestMapping(value = "add.ko", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO)throws Exception{
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] multipartFile, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setAdd(boardDTO);
+		int result = qnaService.setAdd(boardDTO, multipartFile, session.getServletContext());
 		
 		mv.setViewName("redirect:./list.ko");
 		

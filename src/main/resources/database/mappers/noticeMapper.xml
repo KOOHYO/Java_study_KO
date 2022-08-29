@@ -29,9 +29,28 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
-	<select id="getDetail" parameterType="BoardDTO" resultType="NoticeDTO">
-		SELECT * FROM NOTICE WHERE NUM=#{num}
+	<select id="getDetail" parameterType="BoardDTO" resultMap="getDetailResult">
+		SELECT N.*, NF.*
+		FROM NOTICE N
+			 LEFT JOIN
+			 NOTICEFILE NF
+			 ON N.NUM=NF.NUM
+		WHERE N.NUM=#{num}
 	</select>
+	
+	<resultMap type="NoticeDTO" id="getDetailResult">
+		<id column="NUM" property="num"/>
+		<result column="TITLE" property="title"/>
+		<result column="WRITER" property="writer"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="HIT" property="hit"/>
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</collection>
+	</resultMap>
 	
 	<select id="getCount" parameterType="Pager" resultType="Long">
 		SELECT COUNT(num) FROM NOTICE

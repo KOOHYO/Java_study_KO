@@ -73,14 +73,14 @@ public class BankMembersController {
 	}
 	
 	@RequestMapping(value = "join.iu", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo, ServletContext servletContext)throws Exception {
+	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo, HttpSession session)throws Exception {
 		System.out.println("회원가입 접속 (POST)");
 		System.out.println(photo);
 		
 		System.out.println("uploard 파일명 : "+photo.getOriginalFilename());
 		System.out.println("uploard 파라미터명 : "+photo.getName());
 		System.out.println("uploard 파일의 크기"+photo.getSize()+" byte");
-		int result = bankMembersService.setJoin(bankMembersDTO, photo, servletContext);
+		int result = bankMembersService.setJoin(bankMembersDTO, photo, session.getServletContext());
 		if(result>0) {
 			System.out.println("회원가입 성공!");
 		}else {

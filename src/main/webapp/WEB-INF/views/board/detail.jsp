@@ -45,6 +45,11 @@
 		<a href="./update.ko?num=${boardDTO.num}">글 수정하기</a>
 		<a href="./delete.ko?num=${boardDTO.num}">글 삭제하기</a>
 		<a href="./reply.ko?writer=${boardDTO.num}">Reply</a>
+		<c:forEach items="${boardDTO.boardFileDTOs}" var="fileDTO">
+			<p>
+			<a href="../resources/upload/${board}/${fileDTO.fileName}">${fileDTO.oriName}</a>
+			</p>
+		</c:forEach>
 		<%-- <a class="btn btn-secondary disabled" role="button" aria-disabled="true">글상세보기</a> --%>
 	<br>
 <%-- Bootstrap --%>

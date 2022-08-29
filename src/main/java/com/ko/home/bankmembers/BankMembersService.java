@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ko.home.util.FileManager;
+
 @Service
 public class BankMembersService {
 	
@@ -18,6 +20,8 @@ public class BankMembersService {
 	private BankMembersDAO bankMembersDAO;
 	//@Autowired
 	//private ServletContext servletContext;
+	@Autowired
+	private FileManager fileManager;
 	
 	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO)throws Exception {
 		return bankMembersDAO.getMyPage(bankMembersDTO);
@@ -34,6 +38,16 @@ public class BankMembersService {
 		//제일 먼저 회원가입을 먼저 해야한다!
 		//userName에 FK가 있기때문
 		int result = bankMembersDAO.setJoin(bankMembersDTO);
+		String path = "resources/upload/member";
+		String fileName = fileManager.saveFile(servletContext, path, photo);
+		
+		if(!photo.isEmpty()) {
+			BankMembersFileDTO bankMembersFileDTO = new BankMembersFileDTO();
+			bankMembersFileDTO.setFileName(fileName);
+			bankMembersFileDTO.setOriName(photo.getOriginalFilename());
+			bankMembersFileDTO.setUserName(bankMembersDTO.getUserName());
+			bankMembersDAO.setAddFile(bankMembersFileDTO);
+		}
 		
 		//1. HDD에 파일을 저장
 		//	 파일 저장시에 경로는 Tomcat기준이 아니라 OS의 기준으로 실행
