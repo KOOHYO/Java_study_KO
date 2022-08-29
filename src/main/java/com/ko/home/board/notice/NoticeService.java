@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ko.home.board.impl.BoardDTO;
 import com.ko.home.board.impl.BoardFileDTO;
 import com.ko.home.board.impl.BoardService;
+import com.ko.home.util.FileManager;
 import com.ko.home.util.Pager;
 
 @Service
@@ -23,7 +24,7 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private NoticeDAO noticeDAO;
 	@Autowired
-	private ServletContext servletContext;
+	private FileManager fileManager;
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -118,49 +119,22 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception {
 		
-			int result = noticeDAO.setAdd(boardDTO);
+		int result = noticeDAO.setAdd(boardDTO);
+		String path = "recources/upload/notice";
 		
-			//1. HDD에 파일 저장
-			//	1) 파일 저장 위치
-			//	   webapp/resources/upload/notice
-			//	2) 저장할 폴더의 실제 경로 반환 (운영체제-OS 기준)
-			String realPath = servletContext.getRealPath("resources/upload/notice");
-			//realPath 확인
-			System.out.println("realPath : "+realPath);
-			
-			//	3) 저장할 폴더의 정보를 가지는 자바 객체 생성
-			File file = new File(realPath);
-			
-			
-			//	   폴더가 없으면 에러가 발생하기 때문에 폴더를 생성
-			System.out.println(file.exists());
-			if(!file.exists()) { // /resources/upload/notice/a.jpg
-				file.mkdirs();
+		for(MultipartFile multipartFile : files) {
+			if(multipartFile.isEmpty()) {
+				continue;
 			}
-			
-			for(MultipartFile photo :files) {
-				if(photo.isEmpty()) {
-					continue;
-				}
-				file = new File(realPath);
-				//	4) UUID 클래스
-				String fileName = UUID.randomUUID().toString();
-				//	   파일명 확인
-				System.out.println("FileName : "+fileName);
-				fileName = fileName+"_"+photo.getOriginalFilename();
-				System.out.println("FileName+확장자 : "+fileName);
-				file = new File(file, fileName);
-				photo.transferTo(file);
-				
-				BoardFileDTO boardFileDTO = new BoardFileDTO();
-				boardFileDTO.setFileName(fileName);
-				boardFileDTO.setOriName(photo.getOriginalFilename());
-				boardFileDTO.setNum(boardDTO.getNum());
-				noticeDAO.setAddFile(boardFileDTO);
+			String fileName = fileManager.saveFile(servletContext, path, multipartFile);
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
 		}
-		
+
 		return result; //noticeDAO.setAdd(boardDTO); 이건 맨 위로!
 	}
 
