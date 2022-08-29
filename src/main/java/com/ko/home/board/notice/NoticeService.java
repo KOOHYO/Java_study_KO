@@ -158,7 +158,7 @@ public class NoticeService implements BoardService{
 				boardFileDTO.setFileName(fileName);
 				boardFileDTO.setOriName(photo.getOriginalFilename());
 				boardFileDTO.setNum(boardDTO.getNum());
-				noticeDAO.setAdd(boardDTO);
+				noticeDAO.setAddFile(boardFileDTO);
 		}
 		
 		return result; //noticeDAO.setAdd(boardDTO); 이건 맨 위로!

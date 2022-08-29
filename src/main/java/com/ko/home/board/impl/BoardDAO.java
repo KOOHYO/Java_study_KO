@@ -23,7 +23,7 @@ public interface BoardDAO {
 	public int setAdd(BoardDTO boardDTO)throws Exception;
 	
 	//파일 업로드
-	public int setAddFile(BankMembersFileDTO bankMembersFileDTO)throws Exception;
+	public int setAddFile(BoardFileDTO boardFileDTO)throws Exception;
 	
 	//글수정 글번호, 글제목, 글내용
 	public int setUpdate(BoardDTO boardDTO)throws Exception;

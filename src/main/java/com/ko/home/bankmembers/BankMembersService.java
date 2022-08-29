@@ -16,8 +16,8 @@ public class BankMembersService {
 	
 	@Autowired
 	private BankMembersDAO bankMembersDAO;
-	@Autowired
-	private ServletContext servletContext;
+	//@Autowired
+	//private ServletContext servletContext;
 	
 	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO)throws Exception {
 		return bankMembersDAO.getMyPage(bankMembersDTO);
@@ -29,7 +29,7 @@ public class BankMembersService {
 	}
 	
 	//회원가입
-	public int setJoin(BankMembersDTO bankMembersDTO, MultipartFile photo)throws Exception{
+	public int setJoin(BankMembersDTO bankMembersDTO, MultipartFile photo, ServletContext servletContext)throws Exception{
 		
 		//제일 먼저 회원가입을 먼저 해야한다!
 		//userName에 FK가 있기때문

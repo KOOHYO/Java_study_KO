@@ -2,6 +2,7 @@ package com.ko.home.bankmembers;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,14 +73,14 @@ public class BankMembersController {
 	}
 	
 	@RequestMapping(value = "join.iu", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo)throws Exception {
+	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo, ServletContext servletContext)throws Exception {
 		System.out.println("회원가입 접속 (POST)");
 		System.out.println(photo);
 		
 		System.out.println("uploard 파일명 : "+photo.getOriginalFilename());
 		System.out.println("uploard 파라미터명 : "+photo.getName());
 		System.out.println("uploard 파일의 크기"+photo.getSize()+" byte");
-		int result = bankMembersService.setJoin(bankMembersDTO, photo);
+		int result = bankMembersService.setJoin(bankMembersDTO, photo, servletContext);
 		if(result>0) {
 			System.out.println("회원가입 성공!");
 		}else {

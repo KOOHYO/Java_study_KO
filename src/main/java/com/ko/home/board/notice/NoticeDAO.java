@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.ko.home.bankmembers.BankMembersFileDTO;
 import com.ko.home.board.impl.BoardDAO;
 import com.ko.home.board.impl.BoardDTO;
+import com.ko.home.board.impl.BoardFileDTO;
 import com.ko.home.util.Pager;
 
 @Repository
@@ -40,9 +41,9 @@ public class NoticeDAO implements BoardDAO {
 	}
 
 	@Override
-	public int setAddFile(BankMembersFileDTO bankMembersFileDTO) throws Exception {
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(NAMESPACE+"setAddFile", bankMembersFileDTO);
+		return sqlSession.insert(NAMESPACE+"setAddFile", boardFileDTO);
 	}
 
 	@Override
