@@ -17,7 +17,7 @@
 	
 	<insert id="setAddFile" parameterType="BoardFileDTO">
 		INSERT INTO NOTICEFILE
-		VALUES(FILE_SEQ.NEXVAL, #{fileName}, #{oriName}, #{num})
+		VALUES(FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{num})
 	</insert>
 
 	<select id="getList" parameterType="Pager" resultType="NoticeDTO">
