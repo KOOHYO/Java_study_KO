@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ko.home.bankmembers.BankMembersFileDTO;
 import com.ko.home.board.impl.BoardDAO;
 import com.ko.home.board.impl.BoardDTO;
 import com.ko.home.util.Pager;
@@ -36,6 +37,12 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public int setAdd(BoardDTO boardDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setAdd", boardDTO);
+	}
+
+	@Override
+	public int setAddFile(BankMembersFileDTO bankMembersFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setAddFile", bankMembersFileDTO);
 	}
 
 	@Override

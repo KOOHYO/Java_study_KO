@@ -3,6 +3,7 @@ package com.ko.home.board.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.ko.home.bankmembers.BankMembersFileDTO;
 import com.ko.home.util.Pager;
 
 public interface BoardDAO {
@@ -20,6 +21,9 @@ public interface BoardDAO {
 	
 	//글쓰기 글제목, 글작성자, 글내용
 	public int setAdd(BoardDTO boardDTO)throws Exception;
+	
+	//파일 업로드
+	public int setAddFile(BankMembersFileDTO bankMembersFileDTO)throws Exception;
 	
 	//글수정 글번호, 글제목, 글내용
 	public int setUpdate(BoardDTO boardDTO)throws Exception;

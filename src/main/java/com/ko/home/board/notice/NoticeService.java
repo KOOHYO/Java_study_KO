@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ko.home.board.impl.BoardDTO;
+import com.ko.home.board.impl.BoardFileDTO;
 import com.ko.home.board.impl.BoardService;
 import com.ko.home.util.Pager;
 
@@ -119,7 +120,7 @@ public class NoticeService implements BoardService{
 	@Override
 	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		
-		
+			int result = noticeDAO.setAdd(boardDTO);
 		
 			//1. HDD에 파일 저장
 			//	1) 파일 저장 위치
@@ -135,7 +136,7 @@ public class NoticeService implements BoardService{
 			
 			//	   폴더가 없으면 에러가 발생하기 때문에 폴더를 생성
 			System.out.println(file.exists());
-			if(!file.exists()) {
+			if(!file.exists()) { // /resources/upload/notice/a.jpg
 				file.mkdirs();
 			}
 			
@@ -152,9 +153,15 @@ public class NoticeService implements BoardService{
 				System.out.println("FileName+확장자 : "+fileName);
 				file = new File(file, fileName);
 				photo.transferTo(file);
+				
+				BoardFileDTO boardFileDTO = new BoardFileDTO();
+				boardFileDTO.setFileName(fileName);
+				boardFileDTO.setOriName(photo.getOriginalFilename());
+				boardFileDTO.setNum(boardDTO.getNum());
+				noticeDAO.setAdd(boardDTO);
 		}
 		
-		return 0; //noticeDAO.setAdd(boardDTO);
+		return result; //noticeDAO.setAdd(boardDTO); 이건 맨 위로!
 	}
 
 	@Override
