@@ -5,7 +5,7 @@ let d3 = document.getElementById("d3");
 let year = document.getElementById("year");
 let month = document.getElementById("month");
 let date = document.getElementById("date");
-let table = document.getElementById("table");
+let d4 = document.getElementById("d4");
 // alert(d1.value);
 // alert(d1.getAttribute("value"));
 
@@ -19,30 +19,33 @@ for(let i=0; i<count; i++){
 }
 d3.innerHTML=t;
 
-let year1 = window.prompt("년도를 입력하세요");
 let y="";
-for(let i=1899; i<year1; i++){
-    y=y+'<option>'+(i+1)+'</option>';
+for(let i=2022; i>=1900; i--){
+    y=y+'<option>'+i+'</option>';
 }
 year.innerHTML=y;
 
-let month1 = window.prompt("월을 입력하세요");
 let m="";
-for(let i=0; i<month1; i++){
-    m=m+'<option>'+(i+1)+'</option>';
+for(let i=1; i<=12; i++){
+    m=m+'<option>'+i+'</option>';
 }
 month.innerHTML=m;
 
-let date1 = window.prompt("일을 입력하세요");
 let d="";
-for(let i=0; i<date1; i++){
-    d=d+'<option>'+(i+1)+'</option>';
+for(let i=1; i<=31; i++){
+    d=d+'<option>'+i+'</option>';
 }
 date.innerHTML=d;
 
+//----------------------------------------------------------
 let r=prompt("ROW의 갯수 입력");   //3
 let c=prompt("COLUMN의 갯수 입력");//2
-let row="";
+let table="";
 for(let i=0; i<r; i++){
-    row=row+'<tr>'+(i+1)+'</tr>'
+    table=table+'<tr>';
+    for(let j=0; j<c; j++){
+        table=table+'<td>'+i+j+'</td>';
+    }
+    table=tabel+'</tr>';
 }
+d4.innerHTML=table;
