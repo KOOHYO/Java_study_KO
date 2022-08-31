@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -62,6 +63,13 @@ public class BankMembersController {
 		session.invalidate();
 		
 		return "redirect:../";
+	}
+	
+	@GetMapping("check.iu")
+	public String getCheck()throws Exception{
+		System.out.println("체크 페이지 접속");
+		
+		return "member/check";
 	}
 	
 	//회원가입
