@@ -6,6 +6,7 @@ let count=0;
 
 addFiles.addEventListener("click", function(){
     
+    //클릭횟수 증가시키는 순서도 중요함!
     count++;
 
     if(count>5){
