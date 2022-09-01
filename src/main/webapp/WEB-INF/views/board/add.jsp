@@ -42,7 +42,7 @@
 				</div>
 				
 				<div id="addFiles">
-					<button type="button" class="btn btn-success" id="fileAdd">파일 추가</button>
+					<button type="button" class="btn btn-danger" id="fileAdd">파일 추가</button>
 				</div>
 				
 				<div class="mb-3">
