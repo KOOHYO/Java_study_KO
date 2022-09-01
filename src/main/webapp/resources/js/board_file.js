@@ -1,11 +1,17 @@
 const addFiles = document.getElementById("addFiles");
 // const mb-3 = document.getElementById("mb-3");
 
-addFiles.addEventListener("click", function(){
-    console.log(addFiles.value);
-    // if(){
+//마우스 클릭 횟수 
+let count=0;
 
-    // }
+addFiles.addEventListener("click", function(){
+    
+    count++;
+
+    if(count>5){
+        alert("파일은 최대 5개만 가능합니다")
+        return;
+    }
 
     //div Element 생성
     let div = document.createElement("div");
@@ -17,6 +23,9 @@ addFiles.addEventListener("click", function(){
     
     //라벨 추가
     let lab = document.createElement("label");
+    //라벨 안에 콘텐츠 추가
+    let labText = document.createTextNode("File");
+    lab.appendChild(labText);
     //라벨 속성 추가
     let f = document.createAttribute("for");
     f.value="contents";
@@ -25,9 +34,6 @@ addFiles.addEventListener("click", function(){
     let labc = document.createAttribute("class");
     labc.value="form-label";
     lab.setAttributeNode(labc);
-
-    //라벨 안에 콘텐츠 추가
-    let labt = document.createTextNode("File");
     //div안에 라벨 추가
     div.appendChild(lab);
     
