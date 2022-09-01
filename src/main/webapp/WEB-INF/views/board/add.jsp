@@ -41,19 +41,8 @@
 				  <textarea class="form-control" name="contents" id="contents" rows="3">${boardDTO.contents}</textarea>
 				</div>
 				
-				<div class="mb-3">
-				  <label for="contents" class="form-label">File</label>
-				  <input type="file" name="files" class="form-control" id="file">
-				</div>
-				
-				<div class="mb-3">
-				  <label for="contents" class="form-label">File</label>
-				  <input type="file" name="files" class="form-control" id="file">
-				</div>
-				
-				<div class="mb-3">
-				  <label for="contents" class="form-label">File</label>
-				  <input type="file" name="files" class="form-control" id="file">
+				<div id="addFiles">
+					<button type="button" class="btn btn-success" id="fileAdd">파일 추가</button>
 				</div>
 				
 				<div class="mb-3">
@@ -70,5 +59,7 @@
 <script type="text/javascript">
 	$("#contents").summernote();
 </script>
+
+<script src="/resources/js/board_file.js"></script>
 </body>
 </html>
