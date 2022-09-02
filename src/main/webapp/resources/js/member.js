@@ -35,10 +35,18 @@ function loginCheck(){
 
 function check(){
     const all = document.getElementById("all");
-    const ch = document.getElementsByClassName("ch");
+    // const ch = document.getElementsByClassName("ch");
+    const ch = document.querySelectorAll(".ch");
     const join = document.getElementById("join");
     const frm = document.getElementById("frm");
     const req = document.getElementsByClassName("req");
+
+    console.log("foreach");
+    //얘가 작동이 안됌!
+    //왜냐하면 유사배열이기 때문 배열은 아니다!!
+    ch.forEach(function(v, i, ar){
+        console.log(v);
+    });
 
     all.addEventListener("click", function(){
         console.log(all.checked);
