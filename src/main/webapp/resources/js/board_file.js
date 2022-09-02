@@ -86,14 +86,11 @@ fileAdd.addEventListener("click", function(){
 addFiles.addEventListener("click", function(event){
     //div id file1
     //button title="1"
-    if(event.target.classList[0]=='del'){
+    let button = event.target;
+    if(button.classList[0]=='del'){
         alert("삭제 하시겠습니까?");
         // console.log(event.target.title)
-        for(let i=0; i<idx; i++){
-            if(event.target.title==i){
-                fileAdd.div.remove();
-            }
-
-        }
+        document.getElementById("file"+button.title).remove();
+        count--;
     }
 });
