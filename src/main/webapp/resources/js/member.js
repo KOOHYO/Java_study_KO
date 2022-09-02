@@ -34,7 +34,8 @@ function loginCheck(){
 }
 
 function check(){
-    const all = document.getElementById("all");
+    // const all = document.getElementById("all");
+    const all = document.querySelector("#all");
     // const ch = document.getElementsByClassName("ch");
     const ch = document.querySelectorAll(".ch");
     const join = document.getElementById("join");
