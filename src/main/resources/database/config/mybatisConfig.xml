@@ -9,6 +9,7 @@
  		<typeAlias type="com.ko.home.bankmembers.BankMembersFileDTO" alias="BankMembersFileDTO"/>
 	 	<typeAlias type="com.ko.home.bankaccount.BankAccountDTO" alias="BankAccountDTO"/>
 	 	<typeAlias type="com.ko.home.BankBook.BankBookDTO" alias="BankBookDTO"/>
+	 	<typeAlias type="com.ko.home.BankBook.BankBookCommentDTO" alias="BankBookCommentDTO"/>
 	 	<typeAlias type="com.ko.home.board.impl.BoardDTO" alias="BoardDTO"/>
 	 	<typeAlias type="com.ko.home.board.impl.BoardFileDTO" alias="BoardFileDTO"/>
 	 	<typeAlias type="com.ko.home.board.notice.NoticeDTO" alias="NoticeDTO"/>
