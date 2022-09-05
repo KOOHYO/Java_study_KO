@@ -39,30 +39,9 @@ function check(){
     const join = document.getElementById("join");
     const frm = document.getElementById("frm");
     const req = document.getElementsByClassName("req");
-
-    all.addEventListener("click", function(){
-        console.log(all.checked);
-        for(let i=0; i<ch.length; i++){
-            ch[i].checked=all.checked;
-        }
-    });
-
-
-    for(let i=0; i<ch.length; i++){
-        ch[i].addEventListener("click", function(){
-            let result = true;
-            for(let j=0; j<ch.length; j++){
-                if(!ch[j].checked){
-                    result=false;
-                    break;
-                }
-            }
-            all.checked=result;
-        });
-    }
-
+    
     join.addEventListener("click", function(){
-
+        
         let result=true;
         for(let i=0; i<req.length; i++){
             if(!req[i].checked){
@@ -82,6 +61,26 @@ function check(){
         //     alert("약관에 동의 해야 합니다");
         // }
     });
+            
+    all.addEventListener("click", function(){
+        // console.log(all.checked);
+        for(let i=0; i<ch.length; i++){
+            ch[i].checked=all.checked;
+        }
+     });
+            
+    for(let i=0; i<ch.length; i++){
+        ch[i].addEventListener("click", function(){
+            let result = true;
+             for(let j=0; j<ch.length; j++){
+                if(!ch[j].checked){
+                    result=false;
+                    break;
+                }
+            }
+             all.checked=result;
+        });
+    }
 }
 
 function joinCheck(){
@@ -115,23 +114,25 @@ function joinCheck(){
     const pwbtn = document.getElementById("pwbtn");
 
     id.addEventListener("blur", function(){
+        idCheck=false;
         if(id.value.length>1){
-            idCheck=true;
-             // id.focus();
+            // id.focus();
             d1.innerHTML="";
+            idCheck=true;
         }else {
-            idCheck=false;
+            //idCheck=false;
             d1.innerHTML="아이디는 2글자 이상 입력하세요";
         }
 
     });
 
     // 1. pw 길이 체크
-    pw.addEventListener("keyup", function(){
+    pw.addEventListener("change", function(){
         if(v2.value.length>5){
             pwCheck=true;
             // id.focus();
             d2.innerHTML="";
+            pw2.value="";
         }else {
             pwCheck=false;
             d2.innerHTML="비밀번호는 6글자 이상 입력하세요";
@@ -140,10 +141,7 @@ function joinCheck(){
     });
 
     // 2. pw가 같은지 체크
-    pw2.addEventListener("");
-
-
-    pwbtn.addEventListener("blur", function(){
+    pw2.addEventListener("blur", function(){
         
         if(pw.value==pw2.value){
             pw2Check=true;
@@ -170,34 +168,41 @@ function joinCheck(){
     });
 
     joinbtn.addEventListener("click", function(){
-       let name2 = name.value;
-       let email2 = email.value;
-       let phone2 = phone.value;
 
-       let t3 = "";
-       for(let i=0; i<name2.length; i++){
-           console.log(name2.length);
-           if(name.value==""){
-                t3="1글자 이상 이름을 입력하세요"
-                d3.innerHTML=t3;
-                break;
-           }
-       }
-
-       for(let i=0; i<email2.length; i++){
-            if(email2.length=0){
-                t3="1글자 이상 이메일을 입력하세요"
-                d3.innerHTML=t3;
-            }
+        if(idCheck&&pwCheck&&pw2Check&&nameCheck&&emailCheck&&phoneCheck){
+            alert("서버 전송 합니다");
+        }else {
+            alert("필수 입력 사항을 입력해주세요");
         }
 
-        for(let i=0; i<phone2.length; i++){
-            if(phone2.length=0){
-                t3="1글자 이상 전화번호를 입력하세요"
-                d3.innerHTML=t3;
-            }
-        }
-
+        
     });
+    
+    //    let name2 = name.value;
+    //    let email2 = email.value;
+    //    let phone2 = phone.value;
 
+    //    let t3 = "";
+    //    for(let i=0; i<name2.length; i++){
+    //        console.log(name2.length);
+    //        if(name.value==""){
+    //             t3="1글자 이상 이름을 입력하세요"
+    //             d3.innerHTML=t3;
+    //             break;
+    //        }
+    //    }
+
+    //    for(let i=0; i<email2.length; i++){
+    //         if(email2.length=0){
+    //             t3="1글자 이상 이메일을 입력하세요"
+    //             d3.innerHTML=t3;
+    //         }
+    //     }
+
+    //     for(let i=0; i<phone2.length; i++){
+    //         if(phone2.length=0){
+    //             t3="1글자 이상 전화번호를 입력하세요"
+    //             d3.innerHTML=t3;
+    //         }
+    //     }
 }

@@ -18,7 +18,7 @@
 	</div>
 
 	<form action="./join.iu" method="get" id="frm">
-		<button id="join">동의</button>
+		<button type="button" id="join">동의</button>
 	</form>
 
 <script src="/resources/js/member.js"></script>
