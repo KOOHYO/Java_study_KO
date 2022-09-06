@@ -5,6 +5,17 @@
 		    
 <mapper namespace="com.ko.home.BankBook.BankBookCommentDAO">
 	<insert id="setCommentAdd" parameterType="BankBookCommentDTO">
-		INSERT INTO BB_COMMENT
+		INSERT INTO BB_COMMENT (NUM, BOOKNUM, WRITER, CONTENTS, REGDATE)
+		VALUES (BOARD_SEQ.NEXTVAL, #{bookNum}, #{writer}, #{contents}, sysdate)
 	</insert>
+	
+	<select id="getCommentList" parameterType="CommentPager" resultType="BankBookCommentDTO">
+		SELECT * FROM
+		    (SELECT ROWNUM R, C.* FROM
+		        (SELECT * FROM BB_COMMENT 
+		        WHERE BOOKNUM=1659514911403 
+		        ORDER BY NUM DESC) C)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
 </mapper>

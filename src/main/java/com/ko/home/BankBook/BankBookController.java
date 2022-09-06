@@ -1,5 +1,6 @@
 package com.ko.home.BankBook;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,10 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ko.home.util.CommentPager;
 
 @Controller
 @RequestMapping(value = "/bankbook/*")
@@ -21,10 +25,59 @@ public class BankBookController {
 	
 	//----------------------------  Comment  -----------------------
 	
+//	@PostMapping("commentAdd")
+//	public ModelAndView setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
+//		
+//		mv.addObject("result", result);
+//		mv.setViewName("common/ajaxResult");
+//		
+//		return mv;
+//		
+//	}
+	
 	@PostMapping("commentAdd")
-	public void setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+	@ResponseBody //??
+	public String setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
 		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
 		
+		//{}
+		String jsonResult="{\"result\":\""+result+"\"}";
+		
+		return jsonResult;
+		
+	}
+	
+//	@GetMapping("commentList")
+//	public ModelAndView getCommentList(CommentPager commentPager)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
+//		System.out.println("CommentList");
+//		System.out.println(ar.size());
+//		
+//		mv.addObject("commentList", ar);
+//		mv.setViewName("common/commentList");
+//		
+//		return mv;
+//	}
+	
+	@GetMapping("commentList")
+	@ResponseBody
+	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager)throws Exception{
+		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
+		System.out.println("CommentList");
+		System.out.println(ar.size());
+		
+		//json
+		//DTO == {}
+		//num=1 == {"num":1, "bookNum":123, "writer":"name"}
+		//[{}]
+		
+		
+		return ar;
 	}
 	
 	//--------------------------------------------------------------
