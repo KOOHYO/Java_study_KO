@@ -13,9 +13,9 @@ public class BankBookCommentDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.ko.home.BankBook.BankBookCommentDAO.";
 	
-	public int setAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+	public int setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
 		
-		return sqlSession.insert(NAMESPACE+"setAdd", bankBookCommentDTO);
+		return sqlSession.insert(NAMESPACE+"setCommentAdd", bankBookCommentDTO);
 	}
 	
 	public List<BankBookCommentDTO> getList(BankBookCommentDTO bankBookCommentDTO)throws Exception{
