@@ -10,7 +10,17 @@ public class CommentPager {
 	private Long page;
 	private Long perPage;
 	
-	//
+	private Long totalPage;
+	
+	//전체 페이지 갯수 계산
+	public void makePage(Long totalCount) {
+		this.totalPage = totalCount/this.getPerPage();
+		if(totalCount%this.getPerPage() !=0) {
+			this.totalPage++;
+		}
+	}
+	
+	//startRow
 	public void getRowNum() {
 		startRow=(this.getPage()-1)*this.getPerPage()+1;
 		lastRow=this.getPage()*this.getPerPage();
@@ -53,13 +63,21 @@ public class CommentPager {
 
 	public Long getPerPage() {
 		if(this.perPage==null || this.perPage<1) {
-			this.perPage=10L;
+			this.perPage=5L;
 		}
 		return perPage;
 	}
 
 	public void setPerPage(Long perPage) {
 		this.perPage = perPage;
+	}
+
+	public Long getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(Long totalPage) {
+		this.totalPage = totalPage;
 	}
 	
 }

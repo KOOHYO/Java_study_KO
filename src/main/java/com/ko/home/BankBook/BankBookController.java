@@ -1,7 +1,9 @@
 package com.ko.home.BankBook;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,18 +68,25 @@ public class BankBookController {
 	
 	@GetMapping("commentList")
 	@ResponseBody
-	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager)throws Exception{
+	public Map<String, Object> getCommentList(CommentPager commentPager)throws Exception{
 		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
-		System.out.println("CommentList");
-		System.out.println(ar.size());
 		
 		//json
 		//DTO == {}
 		//num=1 == {"num":1, "bookNum":123, "writer":"name"}
 		//[{}]
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", ar);
+		map.put("pager", commentPager);
 		
-		
-		return ar;
+		return map;
+	}
+	
+	@PostMapping("commentDelete")
+	@ResponseBody
+	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+		int result = bankBookService.setCommentDelete(bankBookCommentDTO);
+		return result;
 	}
 	
 	//--------------------------------------------------------------
