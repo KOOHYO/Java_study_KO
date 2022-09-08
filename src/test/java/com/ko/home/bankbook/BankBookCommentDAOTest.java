@@ -41,7 +41,7 @@ public class BankBookCommentDAOTest extends MyAbstractTest{
 		assertNotNull(ar);
 	}
 	
-	@Test
+	//@Test
 	public void getCommentListTotalCount()throws Exception{
 		CommentPager commentPager = new CommentPager();
 		bankBookCommentDAO.getCommentListTotalCount(commentPager);
@@ -55,6 +55,16 @@ public class BankBookCommentDAOTest extends MyAbstractTest{
 		
 		assertEquals(1, result);
 		
+	}
+	
+	@Test
+	public void setCommentUpdateTest()throws Exception{
+		BankBookCommentDTO bankBookCommentDTO = new BankBookCommentDTO();
+		bankBookCommentDTO.setNum(624L);
+		bankBookCommentDTO.setContents("테스트!");
+		int result = bankBookCommentDAO.setCommentUpdate(bankBookCommentDTO);
+		
+		assertEquals(1, result);
 	}
 
 }

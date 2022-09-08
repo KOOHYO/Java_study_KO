@@ -114,6 +114,7 @@ function getCommentList(p, bn){
                 td.setAttributeNode(tdAttr);
                 tdAttr = document.createAttribute("data-comment-num");
                 tdAttr.value=ar[i].num;
+                td.setAttributeNode(tdAttr);
                 td.appendChild(tdText);
                 tr.appendChild(td);
 
@@ -180,7 +181,15 @@ commentList.addEventListener("click", function(event){
         // let v = contents.innerHTML;
         // contents.innerHTML="<textarea>"+v+"</textarea>";
 
+        let contents = event.target.previousSibling.previousSibling.previousSibling.innerHTML
+        let writer = event.target.previousSibling.previousSibling.innerHTML
+        let num = event.target.getAttribute("data-comment-num");
+        console.log(event.target.getAttribute("data-comment-num"));
+        console.log(contents);
+        document.querySelector("#updateContents").innerHTML=contents;
+        document.querySelector("#updateWriter").value=writer;
         document.querySelector("#up").click();
+        document.querySelector("#num").value=num;
 
     }
 
@@ -223,4 +232,46 @@ commentList.addEventListener("click", function(event){
 
         }
     }
+});
+
+//-------------------------- Modal Update button Click ----------------------------
+const update = document.querySelector("#update");
+
+update.addEventListener("click", function(){
+    // modal에서 num, contents
+    let num = document.getElementById("num").value;
+    let contents = document.querySelector("#updateContents").value;
+
+    //-------------------- Ajax --------------------------
+    //1. XHTTPRequest 객체 생성
+    const xhttp = new XMLHttpRequest();
+
+    //2. 메서드, URL정보
+    xhttp.open("POST", "commentUpdate");
+
+    //3. 헤더 정보
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    //4. 요청 발생
+    xhttp.send("num="+num+"&contents="+contents);
+
+    //5. 응답 처리
+    xhttp.onreadystatechange=function(){
+        if(xhttp.readyState==4&&xhttp.status==200){
+            let result = xhttp.responseText.trim();
+            console.log(result);
+            if(result>0){
+                alert("댓글 수정 성공!!");
+                page=1;
+                for(let i=0; i<commentList.children.length;){
+                    commentList.children[0].remove();
+                }
+
+                getCommentList(page, bookNum);
+            }else{
+                alert("댓글 수정 실패..")
+            }
+        }
+    }
+
 });

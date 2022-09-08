@@ -89,6 +89,13 @@ public class BankBookController {
 		return result;
 	}
 	
+	@PostMapping("commentUpdate")
+	@ResponseBody
+	public int setCommentUpdat(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+		int result = bankBookService.setCommentUpdate(bankBookCommentDTO);
+		return result;
+	}
+	
 	//--------------------------------------------------------------
 	
 	@RequestMapping(value = "delete.iu", method = RequestMethod.GET)
