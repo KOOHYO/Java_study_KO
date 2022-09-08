@@ -77,7 +77,7 @@
 
 			<!-- CommentList 출력 -->
 			<div>
-				<table>
+				<table border="1" class="table table-striped">
 					<tbody id="commentList">
 
 					</tbody>

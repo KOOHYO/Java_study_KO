@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ko.home.bankmembers.BankMembersDTO;
 import com.ko.home.board.impl.BoardDTO;
 import com.ko.home.util.Pager;
 
@@ -68,8 +69,15 @@ public class NoticeController {
 	//이것은 servlet-context.xml에 InternalResourceViewResolver를 보면 알 수 있음!
 	//안됌 그러므로 String아니면 ModelAndView를 써야함!!
 	@RequestMapping(value = "add.ko", method = RequestMethod.GET)
-	public String setAdd()throws Exception{
-		return "board/add";
+	public String setAdd(HttpSession session)throws Exception{
+		BankMembersDTO bankMembersDTO = (BankMembersDTO) session.getAttribute("member");
+		
+		if(bankMembersDTO != null) {
+			return "board/add";
+		}else {
+			return "redirect:../member/login.iu";
+		}
+		
 	}
 	
 	//글작성 글제목, 글작성자, 글내용 파라미터로 넘어옴

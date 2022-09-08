@@ -103,6 +103,10 @@ function getCommentList(p, bn){
                 tr.appendChild(td);
 
                 td = document.createElement("td");
+                //날짜 format 변경
+                // let date = new Date(ar[i].regDate);
+                // tdText = document.createTextNode(date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "+date.getDate()+"일");\
+                // td.appendChild(tdText);
                 tdText = document.createTextNode(ar[i].regDate);
                 td.appendChild(tdText);
                 tr.appendChild(td);
@@ -186,7 +190,7 @@ commentList.addEventListener("click", function(event){
         let num = event.target.getAttribute("data-comment-num");
         console.log(event.target.getAttribute("data-comment-num"));
         console.log(contents);
-        document.querySelector("#updateContents").innerHTML=contents;
+        document.querySelector("#updateContents").value=contents;
         document.querySelector("#updateWriter").value=writer;
         document.querySelector("#up").click();
         document.querySelector("#num").value=num;
