@@ -6,23 +6,22 @@
 <%-- BankBookDTO bankBookDTO = (BankBookDTO)request.getAttribute("detail"); --%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <%-- Required meta tags --%>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%-- Bootstrap CSS --%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  </head>
+</head>
 <body>
 	
-	<c:import url="./template/header.jsp"></c:import>
+	<c:import url="../template/header.jsp"></c:import>
 	
+	<h1>통장 상세정보</h1>
 	<section class="container-fluid con-lg-7">
 		<div class="row">
-			<h1>통장 상세정보</h1>
-		
-			<table class="table table-striped">
+			<table border="1">
 				<thead>
 					<tr>
 						<th>BookNum</th>
@@ -47,7 +46,7 @@
 				<a href="../member/join.iu">회원가입하기</a>
 				</c:if>
 			</div>
-			
+		
 			<div>
 				<c:if test="${not empty sessionScope.member}">
 				<a href="./update.iu?bookNum=${detail.bookNum}">통장수정</a>
@@ -59,11 +58,72 @@
 			<div>
 				<a href="./list.iu">통장리스트</a>
 			</div>
+
+			<!-- Comment -->
+			<div class="row">
+				<div class="mb-3">
+					<label for="writer" class="form-label">USERNAME</label>
+					<input type="text" class="form-control" id="writer" placeholder="Enter Your USERNAME">
+				</div>
+				<div class="mb-3">
+					<label for="contents" class="form-label">CONTENTS</label>
+					<textarea class="form-control" id="contents" rows="3"></textarea>
+				</div>
+				<div class="mb-3">
+					<button type="button" id="commentAdd" data-book-num="${detail.bookNum}">댓글작성</button>
+				</div>
+			</div>
+			<!-- Comment -->
+
+			<!-- CommentList 출력 -->
+			<div>
+				<table border="1" class="table table-striped">
+					<tbody id="commentList">
+
+					</tbody>
+				</table>
+				<button id="more" class="btn btn-danger">더보기</button>
+			</div>
+			<!-- CommentList 출력 -->
+
+			<div>
+				<button type="button" style="display: none;" class="btn btn-primary" id="up" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">update</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					  </div>
+					  <div class="modal-body">
+						<form>
+							<input type="hidden" id="num">
+							<div class="mb-3">
+								<label for="recipient-name" class="col-form-label">Writer</label>
+								<input type="text" class="form-control" id="updateWriter">
+							</div>
+							<div class="mb-3">
+								<label for="message-text" class="col-form-label">Contents</label>
+								<textarea class="form-control" id="updateContents"></textarea>
+							</div>
+						</form>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id="update" data-bs-dismiss="modal">Send message</button>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+
 		</div>
 	</section>
+		
+	<c:import url="../template/footer.jsp"></c:import>
 	
-	<c:import url="./template/footer.jsp"></c:import>
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="/resources/js/bankbookCommetn.js"></script>
 </body>
 </html>

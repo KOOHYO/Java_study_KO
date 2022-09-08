@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ko.home.util.CommentPager;
+
 @Repository
 public class BankBookCommentDAO {
 
@@ -14,23 +16,23 @@ public class BankBookCommentDAO {
 	private final String NAMESPACE="com.ko.home.BankBook.BankBookCommentDAO.";
 	
 	public int setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
-		
 		return sqlSession.insert(NAMESPACE+"setCommentAdd", bankBookCommentDTO);
 	}
 	
-	public List<BankBookCommentDTO> getList(BankBookCommentDTO bankBookCommentDTO)throws Exception{
-		
-		return sqlSession.selectList(NAMESPACE+"getList", bankBookCommentDTO);
+	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCommentList", commentPager);
 	}
 	
-	public int setUpdate(BankBookCommentDTO bankBookCommentDTO)throws Exception{
-		
-		return sqlSession.update(NAMESPACE+"setUpdate", bankBookCommentDTO);
+	public Long getCommentListTotalCount(CommentPager commentPager)throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getCommentListTotalCount", commentPager);
 	}
 	
-	public int setDelete(BankBookCommentDTO bankBookCommentDTO)throws Exception{
-		
-		return sqlSession.delete(NAMESPACE+"setDelete", bankBookCommentDTO);
+	public int setCommentUpdate(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setCommentUpdate", bankBookCommentDTO);
+	}
+	
+	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setCommentDelete", bankBookCommentDTO);
 	}
 	
 }
