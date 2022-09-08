@@ -13,10 +13,8 @@
   </head>
 <body>
 
-	<c:import url="./template/header.jsp"></c:import>
+	<c:import url="../template/header.jsp"></c:import>
 
-	<%-- 입력창 만들기 전 부트스트랩 쓸때 이걸 써야한다 --%>
-	<%-- con-lg-7은 사이즈 조절하는것 --%>
 	<section class="container-fluid con-lg-7">
 		<h1 class="align-center">${board} List Page</h1>
 		<div class="row mb-3">
@@ -113,7 +111,7 @@
 		</div>
 	</section>
 	
-	<c:import url="./template/footer.jsp"></c:import>
+	<c:import url="../template/footer.jsp"></c:import>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="/resources/js/board.js"></script>
