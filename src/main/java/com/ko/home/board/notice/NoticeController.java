@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +49,10 @@ public class NoticeController {
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("board/list");
+		
+		if(ar.size()!=0) {
+			throw new Exception();
+		}
 		
 		return mv;
 	}
@@ -126,6 +131,15 @@ public class NoticeController {
 		System.out.println("Delete 접속");
 		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list.ko";
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView exceptionTest() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("errors/error404");
+		
+		return mv;
 	}
 	
 }
