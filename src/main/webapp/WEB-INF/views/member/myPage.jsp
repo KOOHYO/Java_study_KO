@@ -44,6 +44,13 @@
 		<img alt="" src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
 	</div>
    
+   <div>
+   		<c:forEach items="${member.roleDTOs}" var="roleDTO">
+   			<p>등급번호 : ${roleDTO.roleNum}</p>
+   			<p>등급이름 : ${roleDTO.roleName}</p>
+   		</c:forEach>
+   </div>
+   
    </section>
    
    <c:import url="../template/footer.jsp"></c:import>
