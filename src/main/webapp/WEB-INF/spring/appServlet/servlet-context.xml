@@ -40,8 +40,8 @@
 	
 		<interceptor>
 			<mapping path="/notice/**"/>
-			<exclude-mapping path="notice/list.ko"/>
-			<exclude-mapping path="notice/detail.ko"/>
+			<exclude-mapping path="/notice/list.ko"/>
+			<exclude-mapping path="/notice/detail.ko"/>
 			<beans:ref bean="adminCheckInterceptor"/>
 		</interceptor>
 		

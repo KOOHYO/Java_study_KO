@@ -55,6 +55,7 @@
 		    ROLE R
 		    ON (MR.ROLENUM=R.ROLENUM)
     	WHERE BM.USERNAME=#{userName} AND BM.PASSWORD=#{passWord}
+    	ORDER BY R.ROLENUM ASC
 	</select>
 	
 	<resultMap type="BankMembersDTO" id="getLoginResult">

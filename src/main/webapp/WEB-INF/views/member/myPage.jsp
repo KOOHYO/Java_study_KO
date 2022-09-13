@@ -49,6 +49,9 @@
    			<p>등급번호 : ${roleDTO.roleNum}</p>
    			<p>등급이름 : ${roleDTO.roleName}</p>
    		</c:forEach>
+   		
+   		<h1>당신은 ${member.roleDTOs.get(0).roleName}</h1>
+   		<h1>당신은 ${member.roleDTOs["0"].roleName}</h1>
    </div>
    
    </section>

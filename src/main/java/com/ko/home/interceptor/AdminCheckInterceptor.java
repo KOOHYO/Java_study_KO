@@ -15,7 +15,7 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		//1. 
-		BankMembersDTO bankMembersDTO = (BankMembersDTO) request.getSession().getAttribute(null);
+		BankMembersDTO bankMembersDTO = (BankMembersDTO) request.getSession().getAttribute("member");
 		
 		boolean check = false;
 		
