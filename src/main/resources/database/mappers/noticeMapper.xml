@@ -15,6 +15,14 @@
 		LIKE '%'||#{search}||'%'
 	</sql>
 	
+	<select id="getFileDetail" resultType="BoardFileDTO" parameterType="BoardFileDTO">
+		SELECT * FROM NOTICEFILE WHERE FILENUM=#{fileNum}
+	</select>
+	
+	<delete id="setFileDelete" parameterType="BoardFileDTO">
+		DELETE NOTICEFILE WHERE FILENUM=#{fileNum}
+	</delete>
+	
 	<insert id="setAddFile" parameterType="BoardFileDTO">
 		INSERT INTO NOTICEFILE
 		VALUES(FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{num})

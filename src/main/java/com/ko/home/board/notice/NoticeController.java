@@ -1,5 +1,6 @@
 package com.ko.home.board.notice;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,15 +10,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ko.home.bankmembers.BankMembersDTO;
 import com.ko.home.board.impl.BoardDTO;
+import com.ko.home.board.impl.BoardFileDTO;
+import com.ko.home.util.FileManager;
 import com.ko.home.util.Pager;
 
 @Controller
@@ -30,6 +35,16 @@ public class NoticeController {
 	@ModelAttribute("board")
 	public String getBoard() {
 		return "notice";
+	}
+	
+	@PostMapping("fileDelete")
+	@ResponseBody //JSP로 가지말고 바로 응답으로 보내주세요
+	public int setFileDelete(BoardFileDTO boardFileDTO, HttpSession session)throws Exception{
+		System.out.println("File Delete");
+		System.out.println("Context  : "+session.getServletContext());
+		int result = noticeService.setFileDelete(boardFileDTO, session.getServletContext());
+		
+		return result;
 	}
 	
 	//글목록
@@ -50,9 +65,9 @@ public class NoticeController {
 		mv.addObject("pager", pager);
 		mv.setViewName("board/list");
 		
-		if(ar.size()!=0) {
-			throw new Exception();
-		}
+//		if(ar.size()!=0) {
+//			throw new Exception();
+//		}
 		
 		return mv;
 	}
@@ -118,8 +133,9 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "update.ko", method = RequestMethod.POST)
-	public String setUpdate(BoardDTO boardDTO)throws Exception{
-		int result = noticeService.setUpdate(boardDTO);
+	public String setUpdate(BoardDTO boardDTO, MultipartFile [] files, HttpSession session)throws Exception{
+		int result = noticeService.setUpdate(boardDTO, files, session.getServletContext());
+		
 		
 		return "redirect:./detail.ko?num="+boardDTO.getNum();
 	}

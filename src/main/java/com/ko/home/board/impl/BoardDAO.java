@@ -10,6 +10,12 @@ public interface BoardDAO {
 
 	//추상클래스크는 public abstract 생략해도 자동으로 되어있다
 	
+	//fileDetail
+	public BoardFileDTO getFileDetail(BoardFileDTO boardFileDTO)throws Exception;
+	
+	//fileDelete
+	public int setFileDelete(BoardFileDTO boardFileDTO)throws Exception;
+	
 	//글목록 X
 	public List<BoardDTO> getList(Pager pager)throws Exception;
 	

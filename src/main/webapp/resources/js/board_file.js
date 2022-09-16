@@ -1,10 +1,71 @@
 const addFiles = document.getElementById("addFiles");
 const fileAdd = document.getElementById("fileAdd");
 // const mb-3 = document.getElementById("mb-3");
+const fileDelete = document.querySelectorAll(".fileDelete");
+//const fileDelete = document.getElementsByClassName("fileDelete"); 안됌!!
+
+//--------------------------- Update시 file Delete ------------------------------
+
+try{
+fileDelete.forEach(function(f){
+    f.addEventListener("click", function(){
+
+        console.log("p : ", f.parentNode);
+
+        //확인버튼==true 취소버튼==false를 받는다
+        let check = window.confirm("삭제를 하면 되돌릴 수 없다");
+
+        if(!check){
+            return;
+        }
+
+        let fileNum = f.getAttribute("data-file-num");
+
+        //Ajax
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("POST", "./fileDelete");
+
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhttp.send("fileNum="+fileNum);
+
+        xhttp.onreadystatechange=function(){
+            if(xhttp.readyState==4&&xhttp.status==200){
+                let result = xhttp.responseText.trim();
+                if(result==1){
+                    console.log(result);
+                    f.parentNode.remove();
+                    count--;
+                }else {
+                    console.log(result);
+                }
+            }
+        }
+
+        });
+    });
+}catch(e){
+    console.log(e);
+}
+
+// for(fi of fileDelete){
+//     console.log(fi);
+// }
+
+//------------------------ Add시 file add -----------------------
 
 //마우스 클릭 횟수 
 let count=0;
 let idx=0;
+
+function setCount(c){
+    if(c>=0){
+        count=c;
+    }
+}
+
+try{
 
 fileAdd.addEventListener("click", function(){
     
@@ -90,3 +151,7 @@ addFiles.addEventListener("click", function(event){
         count--;
     }
 });
+
+}catch(e){
+
+}

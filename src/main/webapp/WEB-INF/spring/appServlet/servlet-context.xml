@@ -27,7 +27,7 @@
 	<beans:bean class="com.ko.home.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
 	
 	<!-- URL - Interceptor 맵핑 -->
-	<interceptors>
+<!-- 	<interceptors>
 		
 		<interceptor>
 			<mapping path="/notice/**"/>
@@ -45,7 +45,7 @@
 			<beans:ref bean="adminCheckInterceptor"/>
 		</interceptor>
 		
-	</interceptors>
+	</interceptors> -->
 	
 	<context:component-scan base-package="com.ko.home" />
 	
